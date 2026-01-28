@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - お問い合わせ | 株式会社Grand Trading</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Grand Trading">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">ホーム</a></li>
+                    <li><a href="auction.html">オークション</a></li>
+                    <li><a href="export.html">海外輸出</a></li>
+                    <li class="dropdown">
+                        <a href="company.html">会社概要</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="clients.html">対象のお客様</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="access.html">アクセス</a></li>
+                    <li><a href="contact.html" class="btn-contact">お問い合わせ</a></li>
+                    <li class="lang-switch">
+                        <a href="contact.html" class="active">JP</a> | <a href="en/contact.html">EN</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <div class="page-header" style="background-image: url('images/hero2.jpg');">
+        <div class="page-header-overlay"></div>
+        <div class="page-header-content fade-up">
+            <h1>Contact Us</h1>
+            <p>お問い合わせ</p>
+        </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li>Contact Us</li>
+        </ul>
+    </div>
+
+    <!-- Content -->
+    <section class="subpage-content">
+        <div class="container" style="max-width: 800px;">
+            <div class="content-block fade-up">
+                <h3>お問い合わせフォーム</h3>
+                <p>
+                    事業に関するご質問、グランドオークションへのご参加・ご出品に関するご相談など、お気軽にお問い合わせください。<br>
+                    担当者より、３営業日以内にご連絡させていただきます。
+                </p>
+
+                <form action="#" method="POST" style="margin-top: 3rem;">
+                    <div class="form-group fade-up delay-100">
+                        <label for="name">お名前 <span style="color: red;">*</span></label>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="例：山田 太郎" required>
+                    </div>
+
+                    <div class=" form-group fade-up delay-100">
+                        <label for="company">会社名</label>
+                        <input type="text" id="company" name="company" class="form-control"
+                            placeholder="例：株式会社Grand Trading">
+                    </div>
+
+                    <div class="form-group fade-up delay-100">
+                        <label for="email">メールアドレス <span style="color: red;">*</span></label>
+                        <input type="email" id="email" name="email" class="form-control"
+                            placeholder="例：info@gratrajapan.com" required>
+                    </div>
+
+                    <div class="form-group fade-up delay-100">
+                        <label for="subject">件名 <span style="color: red;">*</span></label>
+                        <select id="subject" name="subject" class="form-control" required>
+                            <option value="">選択してください</option>
+                            <option value="auction">グランドオークションについて</option>
+                            <option value="export">海外輸出事業について</option>
+                            <option value="buy">買取について</option>
+                            <option value="other">その他のお問い合わせ</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group fade-up delay-200">
+                        <label for="message">お問い合わせ内容 <span style="color: red;">*</span></label>
+                        <textarea id="message" name="message" class="form-control" placeholder="お問い合わせ内容をご記入ください。"
+                            required></textarea>
+                    </div>
+
+                    <div class=" fade-up delay-300" style="text-align: center;">
+                        <button type="submit" class="btn-submit">送信する</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <a href="index.html" class="logo">
+                    <img src="images/logo.png" alt="Grand Trading">
+                </a>
+                <div class="footer-address">
+                    〒276-0034 千葉県八千代市平戸403<br>
+                    TEL: 047-770-0225
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>メインメニュー</h4>
+                <ul>
+                    <li><a href="index.html">ホーム</a></li>
+                    <li><a href="auction.html">オークション</a></li>
+                    <li><a href="export.html">海外輸出</a></li>
+                    <li><a href="access.html">アクセス</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>会社情報</h4>
+                <ul>
+                    <li><a href="company.html">会社概要</a></li>
+                    <li><a href="privacy.html">プライバシーポリシー</a></li>
+                    <li><a href="contact.html">お問い合わせ</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 Grand Trading Co., Ltd. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
