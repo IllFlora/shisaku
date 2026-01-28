@@ -7,7 +7,7 @@
     <title>株式会社Grand Trading | Connecting Japan's Tradition to the Future</title>
     <meta name="description"
         content="株式会社Grand Tradingは、日本の伝統文化と中古品（Used in Japan）を世界へ届けるグローバル企業です。オークション事業、海外輸出事業を展開しています。">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel=" stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
@@ -21,12 +21,20 @@
             </a>
             <nav>
                 <ul>
-                    <li><a href="index.html">HOME</a></li>
-                    <li><a href="grandauction.html">GRAND AUCTION</a></li>
-                    <li><a href="business.html">BUSINESS</a></li>
-                    <li><a href="service.html">SERVICE</a></li>
-                    <li><a href="company.html">COMPANY</a></li>
-                    <li><a href="contact.html" class="btn-contact">CONTACT</a></li>
+                    <li><a href="index.html">ホーム</a></li>
+                    <li><a href="auction.html">オークション</a></li>
+                    <li><a href="export.html">海外輸出</a></li>
+                    <li class="dropdown">
+                        <a href="company.html">会社概要</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="clients.html">対象のお客様</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="access.html">アクセス</a></li>
+                    <li><a href="contact.html" class="btn-contact">お問い合わせ</a></li>
+                    <li class="lang-switch">
+                        <a href="index.html" class="active">JP</a> | <a href="en/index.html">EN</a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -44,7 +52,7 @@
         <div class="hero-content fade-up">
             <h1>Connecting Japan's<br>Tradition to the Future</h1>
             <p>日本の価値ある文化を、世界中の必要とする人々へ。<br>私たちは「Used in Japan」の普及と発展をリードします。</p>
-            <a href="business.html" class="btn-main">View Our Business</a>
+
         </div>
     </section>
 
@@ -56,10 +64,60 @@
         </div>
         <div class="mission-text fade-up delay-100">
             <p>
-                株式会社Grand Tradingは、国内の優れた中古品や伝統工芸品を公正な市場を通じて世界へ提供することをミッションとしています。<br>
+                株式会社Grand
+                Tradingは、国内の優れた中古品や伝統工芸品を公正な市場を通じて世界へ提供することをミッションとしています。<br>
                 古き良きものを大切にする日本の心（Mottainai）をビジネスを通じて体現し、<br>
                 循環型社会の実現と日本文化の継承に貢献します。
             </p>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section class="bg-offset" id="clients">
+        <div class="container">
+            <div class="section-title fade-up">
+                <p>Clients</p>
+                <h2>対象となるお客様</h2>
+            </div>
+            <div class="clients-grid">
+                <!-- Administrative -->
+                <!-- Administrative -->
+                <a href="clients.html#admin" class="client-card fade-up delay-100"
+                    style="color: inherit; text-decoration: none;">
+                    <div class="client-icon">
+                        <i class="fa-solid fa-building-columns"></i>
+                    </div>
+                    <h3>行政・自治体</h3>
+                    <p>管財物件の提価、公売オークションの代行など、透明性の高い手続きで資産の現金化をサポートします。</p>
+                </a>
+                <!-- Corporations -->
+                <a href="clients.html#corp" class="client-card fade-up delay-200"
+                    style="color: inherit; text-decoration: none;">
+                    <div class="client-icon">
+                        <i class="fa-solid fa-building"></i>
+                    </div>
+                    <h3>法人様</h3>
+                    <p>過剰在庫の処分、店舗移転に伴う資産売却など、ビジネスの効率化とキャッシュフロー改善に貢献します。</p>
+                </a>
+                <!-- Traders -->
+                <a href="clients.html#trader" class="client-card fade-up delay-300"
+                    style="color: inherit; text-decoration: none;">
+                    <div class="client-icon">
+                        <i class="fa-solid fa-handshake"></i>
+                    </div>
+                    <h3>業者様</h3>
+                    <p>仕入れルートの拡大や販路開拓として、BtoBオークションならではの適正価格での取引を実現します。</p>
+                </a>
+                <!-- Individuals -->
+                <a href="clients.html#individual" class="client-card fade-up delay-300"
+                    style="color: inherit; text-decoration: none;">
+                    <div class="client-icon">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <h3>個人様</h3>
+                    <p>遺品整理やコレクションの売却など、大切な資産を次の方へ繋ぐお手伝いを丁寧にさせていただきます。</p>
+                </a>
+            </div>
         </div>
     </section>
 
@@ -78,8 +136,8 @@
                     </div>
                     <div class="card-content">
                         <h3>Grand Auction</h3>
-                        <p>国内最大級のBtoBブランドオークション。時計、宝石、バッグなど、確かな真贋鑑定を経た高品質な商品を競りにかけます。</p>
-                        <a href="grandauction.html" class="link-arrow">MORE DETAILS <i
+                        <p>国内最大級のBtoBブランドオークション。時計、宝石、バッグなど、高品質な商品を競りにかけます。</p>
+                        <a href="auction.html" class="link-arrow">MORE DETAILS <i
                                 class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
@@ -90,20 +148,8 @@
                     </div>
                     <div class="card-content">
                         <h3>Overseas Export</h3>
-                        <p>世界各国への輸出事業。現地のニーズに合わせたマーケティングと物流ネットワークで、日本の商品をグローバルに展開します。</p>
-                        <a href="service.html" class="link-arrow">MORE DETAILS <i
-                                class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <!-- Card 3 -->
-                <div class="card fade-up delay-300">
-                    <div class="card-image-wrapper">
-                        <img src="images/section_pickup.jpg" alt="Consulting">
-                    </div>
-                    <div class="card-content">
-                        <h3>Consulting</h3>
-                        <p>オークション運営やリユース事業の立ち上げ支援。豊富な実績に基づいたノウハウでビジネスの成長をサポートします。</p>
-                        <a href="business.html" class="link-arrow">MORE DETAILS <i
+                        <p>タイ、フィリピン、中国を中心とした世界各国への輸出事業。現地のニーズに合わせたマーケティングと物流ネットワークで、日本の商品をグローバルに展開します。</p>
+                        <a href="export.html" class="link-arrow">MORE DETAILS <i
                                 class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
@@ -111,35 +157,7 @@
         </div>
     </section>
 
-    <!-- Topics Section -->
-    <section class="container">
-        <div class="section-title fade-up">
-            <p>News</p>
-            <h2>お知らせ</h2>
-        </div>
-        <div style="max-width: 900px; margin: 0 auto;" class="fade-up delay-100">
-            <ul class="topics-list">
-                <li class="topics-item">
-                    <span class="topics-date">2024.10.15</span>
-                    <span class="topics-cat">NEWS</span>
-                    <a href="topics.html" class="topics-title">本社移転のお知らせ</a>
-                </li>
-                <li class="topics-item">
-                    <span class="topics-date">2024.09.20</span>
-                    <span class="topics-cat">EVENT</span>
-                    <a href="topics.html" class="topics-title">第50回グランドオークション開催決定</a>
-                </li>
-                <li class="topics-item">
-                    <span class="topics-date">2024.08.01</span>
-                    <span class="topics-cat">PRESS</span>
-                    <a href="topics.html" class="topics-title">ウェブサイトをリニューアルいたしました</a>
-                </li>
-            </ul>
-            <div class="view-all-container">
-                <a href="topics.html" class="view-all-btn">VIEW ALL NEWS</a>
-            </div>
-        </div>
-    </section>
+
 
     <!-- Footer -->
     <footer>
@@ -149,7 +167,7 @@
                     <img src="images/logo.png" alt="Grand Trading">
                 </a>
                 <div class="footer-address">
-                    〒274-0054 千葉県船橋市金堀町69<br>
+                    〒276-0034 千葉県八千代市平戸403<br>
                     TEL: 047-770-0225
                 </div>
                 <div class="social-links">
@@ -159,20 +177,20 @@
                 </div>
             </div>
             <div class="footer-links">
-                <h4>Main Menu</h4>
+                <h4>メインメニュー</h4>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="grandauction.html">Grand Auction</a></li>
-                    <li><a href="business.html">Business Model</a></li>
-                    <li><a href="service.html">Overseas Export</a></li>
+                    <li><a href="index.html">ホーム</a></li>
+                    <li><a href="auction.html">オークション</a></li>
+                    <li><a href="export.html">海外輸出</a></li>
+                    <li><a href="access.html">アクセス</a></li>
                 </ul>
             </div>
             <div class="footer-links">
-                <h4>Company Info</h4>
+                <h4>会社情報</h4>
                 <ul>
-                    <li><a href="company.html">Company Profile</a></li>
-                    <li><a href="topics.html">News & Topics</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="company.html">会社概要</a></li>
+                    <li><a href="privacy.html">プライバシーポリシー</a></li>
+                    <li><a href="contact.html">お問い合わせ</a></li>
                 </ul>
             </div>
         </div>
@@ -181,7 +199,10 @@
         </div>
     </footer>
 
+
+
     <script src="js/script.js"></script>
+
 </body>
 
 </html>
