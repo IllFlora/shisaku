@@ -82,7 +82,7 @@ header.scrolled nav a {
 /* Logo handling for visibility */
 /* Default (Hero overlay): Invert logo to white if it's black */
 header:not(.scrolled) .logo img {
-    filter: invert(1) brightness(2);
+    /* filter: invert(1) brightness(2); Remove invert to keep original logo color */
 }
 
 /* Scrolled: Reset filter to show original (dark) logo */
@@ -134,6 +134,62 @@ nav a::after {
 
 nav a:hover::after {
     width: 100%;
+}
+
+/* Dropdown Menu */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: #fff;
+    min-width: 180px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    padding: 0.5rem 0;
+    border-radius: 4px;
+    z-index: 1000;
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+header.scrolled .dropdown-menu {
+    border: 1px solid #f0f0f0;
+}
+
+.dropdown-menu li {
+    display: block;
+    margin: 0;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 0.8rem 1.5rem;
+    color: var(--text-color);
+    /* Always dark text in dropdown */
+    font-size: 0.85rem;
+    white-space: nowrap;
+    transition: background 0.3s;
+    text-align: center;
+}
+
+.dropdown-menu a:hover {
+    background: #f9f9f9;
+    color: var(--secondary-color);
+}
+
+.dropdown-menu a::after {
+    display: none;
 }
 
 .btn-contact {
@@ -756,4 +812,444 @@ textarea.form-control {
 
 .btn-submit:hover {
     background-color: var(--secondary-color);
+}
+
+/* Clients Section */
+.clients-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.client-card {
+    background: #fff;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: var(--transition-smooth);
+    border-bottom: 3px solid transparent;
+}
+
+.client-card:hover {
+    transform: translateY(-10px);
+    border-bottom-color: var(--secondary-color);
+}
+
+.client-icon {
+    width: 80px;
+    height: 80px;
+    background: rgba(10, 25, 47, 0.05);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    transition: var(--transition-smooth);
+}
+
+.client-card:hover .client-icon {
+    background: var(--primary-color);
+}
+
+.client-icon i {
+    font-size: 2rem;
+    color: var(--primary-color);
+    transition: var(--transition-smooth);
+}
+
+.client-card:hover .client-icon i {
+    color: var(--secondary-color);
+}
+
+.client-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.client-card p {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 0;
+}
+
+/* Modals */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 25, 47, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition-smooth);
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.client-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    width: 90%;
+    max-width: 700px;
+    background: #fff;
+    z-index: 2001;
+    border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.client-modal.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%);
+}
+
+.modal-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #888;
+    transition: color 0.3s;
+    z-index: 10;
+}
+
+.modal-close:hover {
+    color: var(--secondary-color);
+}
+
+.modal-content {
+    padding: 3rem;
+}
+
+.modal-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 2rem;
+}
+
+.modal-header i {
+    font-size: 3rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.modal-header h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0;
+}
+
+.modal-body h4 {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    line-height: 1.6;
+}
+
+.modal-body p {
+    margin-bottom: 1.5rem;
+    color: #444;
+    line-height: 1.9;
+}
+
+.modal-body .note {
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 2rem;
+}
+
+.modal-list h5 {
+    font-size: 1rem;
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.modal-list p {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+    padding-left: 1.5rem;
+}
+
+/* Cursor pointer for clickable cards */
+.client-card[data-modal] {
+    cursor: pointer;
+}
+
+/* Auction Items Grid */
+.items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 1rem;
+    margin-top: 3rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.item-card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: var(--transition-smooth);
+    text-align: center;
+}
+
+.item-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.item-card img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    background-color: #f9f9f9;
+    padding: 0.5rem;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.item-card:hover img {
+    transform: scale(1.08);
+}
+
+.item-card p {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--primary-color);
+    margin-bottom: 0;
+    letter-spacing: 0.05em;
+    backdrop-filter: blur(5px);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Clients Page Styles */
+.client-section {
+    margin-bottom: 4rem;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.client-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 1rem;
+}
+
+.client-header i {
+    font-size: 2rem;
+    color: var(--secondary-color);
+}
+
+.client-header h4 {
+    font-size: 1.5rem;
+    margin: 0;
+    color: var(--primary-color);
+}
+
+.client-body .lead-text {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.client-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.client-list .list-item {
+    background: #f9f9f9;
+    padding: 1rem;
+    border-radius: 4px;
+}
+
+.client-list h6 {
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.flow-box {
+    background: #f0f4f8;
+    padding: 2rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+}
+
+.flow-box h5 {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.flow-steps {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.flow-steps li {
+    position: relative;
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 6px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.step-num {
+    display: inline-block;
+    background: var(--secondary-color);
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.step-title {
+    display: block;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+/* Export Page Styles */
+.export-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.export-item {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.export-item:hover {
+    transform: translateY(-5px);
+}
+
+.export-item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    /* Remove bottom space */
+}
+
+.appeal-box {
+    background: #eef2f6;
+    padding: 2.5rem;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid #dae1e7;
+}
+
+.appeal-box h4 {
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.appeal-box p {
+    margin: 0;
+    line-height: 1.8;
+}
+/* Language Switcher */
+.lang-switch {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-light);
+    font-family: var(--font-en);
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin-left: 1rem;
+}
+
+header.scrolled .lang-switch {
+    color: var(--text-color);
+}
+
+.lang-switch a {
+    color: inherit;
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+    opacity: 0.7;
+    transition: opacity 0.3s, border-color 0.3s;
+}
+
+.lang-switch a:hover,
+.lang-switch a.active {
+    opacity: 1;
+    border-bottom-color: var(--secondary-color);
+}
+
+.lang-switch a::after {
+    display: none;
 }
