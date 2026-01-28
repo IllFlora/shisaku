@@ -112,11 +112,25 @@ document.addEventListener('DOMContentLoaded', () => {
         modalOverlay.addEventListener('click', closeModal);
     }
 
-    // Close on Escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            closeModal();
-        }
-    });
+    // Mobile Menu Toggle
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const nav = document.querySelector('nav');
+
+    if (mobileToggle && nav) {
+        mobileToggle.addEventListener('click', () => {
+            mobileToggle.classList.toggle('active');
+            nav.classList.toggle('nav-active');
+            document.body.classList.toggle('no-scroll');
+        });
+
+        // Close menu when a link is clicked
+        nav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileToggle.classList.remove('active');
+                nav.classList.remove('nav-active');
+                document.body.classList.remove('no-scroll');
+            });
+        });
+    }
 
 });
