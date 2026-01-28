@@ -74,4 +74,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', checkScroll);
     checkScroll(); // Initial check
+
+    // Client Details Modals
+    const modalOverlay = document.getElementById('modal-overlay');
+    const modalCards = document.querySelectorAll('.client-card[data-modal]');
+    const closeButtons = document.querySelectorAll('.modal-close');
+    const modals = document.querySelectorAll('.client-modal');
+
+    // Open Modal
+    modalCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const modalId = card.getAttribute('data-modal');
+            const targetModal = document.getElementById(modalId);
+
+            if (targetModal && modalOverlay) {
+                targetModal.classList.add('active');
+                modalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            }
+        });
+    });
+
+    // Close Function
+    const closeModal = () => {
+        modals.forEach(modal => modal.classList.remove('active'));
+        if (modalOverlay) modalOverlay.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+    };
+
+    // Close on X click
+    closeButtons.forEach(btn => {
+        btn.addEventListener('click', closeModal);
+    });
+
+    // Close on Overlay click
+    if (modalOverlay) {
+        modalOverlay.addEventListener('click', closeModal);
+    }
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeModal();
+        }
+    });
+
 });
