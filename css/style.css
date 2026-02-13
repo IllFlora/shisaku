@@ -116,6 +116,7 @@ header.scrolled .logo img {
 nav>ul {
     display: flex;
     gap: 3rem;
+    align-items: center;
 }
 
 nav a {
@@ -125,7 +126,7 @@ nav a {
     color: var(--text-light);
     letter-spacing: 0.2em;
     position: relative;
-    padding-bottom: 8px;
+    padding: 10px 0;
     text-transform: uppercase;
 }
 
@@ -134,7 +135,7 @@ nav a::after {
     position: absolute;
     width: 0;
     height: 1px;
-    bottom: 0;
+    bottom: 5px;
     left: 0;
     background-color: var(--secondary-color);
     transition: var(--transition-smooth);
@@ -147,8 +148,6 @@ nav a:hover::after {
 /* Dropdown Menu */
 .dropdown {
     position: relative;
-    display: flex;
-    align-items: center;
 }
 
 .dropdown-menu {
@@ -158,7 +157,7 @@ nav a:hover::after {
     left: 50%;
     transform: translateX(-50%) translateY(15px);
     background: #fff;
-    min-width: 200px;
+    min-width: 160px;
     box-shadow: 0 15px 40px rgba(10, 25, 47, 0.1);
     opacity: 0;
     visibility: hidden;
@@ -185,7 +184,7 @@ header.scrolled .dropdown-menu {
 
 .dropdown-menu a {
     display: block;
-    padding: 0.8rem 1.5rem;
+    padding: 0.6rem 1.2rem;
     color: var(--text-color);
     /* Always dark text in dropdown */
     font-size: 0.85rem;
@@ -519,88 +518,68 @@ section {
 }
 
 
-/* Footer - Minimalist Redesign */
+/* Footer - Ultra Minimalist */
 footer {
-    background-color: #fcfcfc;
-    color: var(--text-color);
-    padding: 6rem 2rem 4rem;
+    background-color: #fff;
+    padding: 3rem 1.5rem;
     border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.footer-minimal {
+.footer-simple {
     max-width: 1200px;
     margin: 0 auto;
-}
-
-.footer-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 4rem;
     flex-wrap: wrap;
-    gap: 2rem;
-}
-
-.footer-top .logo img {
-    height: 45px;
-    width: auto;
-    opacity: 0.8;
-}
-
-.footer-social {
-    display: flex;
     gap: 1.5rem;
 }
 
-.footer-social a {
-    color: var(--primary-color);
-    font-size: 1.2rem;
-    transition: var(--transition-smooth);
-    opacity: 0.6;
+.footer-simple .logo img {
+    height: 30px;
+    width: auto;
+    opacity: 0.7;
+    filter: grayscale(1);
 }
 
-.footer-social a:hover {
-    color: var(--secondary-color);
-    opacity: 1;
-}
-
-.footer-bottom {
+.footer-nav-simple {
     display: flex;
-    justify-content: space-between;
+    gap: 2rem;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(0, 0, 0, 0.03);
 }
 
-.footer-nav {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.footer-nav a {
+.footer-nav-simple a {
     font-family: var(--font-en);
-    font-size: 0.75rem;
-    color: #888;
+    font-size: 0.7rem;
+    color: #999;
     letter-spacing: 0.1em;
     font-weight: 500;
     transition: var(--transition-smooth);
 }
 
-.footer-nav a:hover {
+.footer-nav-simple a:hover {
     color: var(--primary-color);
 }
 
-.copyright {
-    color: #bbb;
+.copyright-simple {
+    color: #ccc;
     font-family: var(--font-en);
     font-size: 0.7rem;
     letter-spacing: 0.05em;
-    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .footer-simple {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .footer-nav-simple {
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 }
 
 
@@ -1248,11 +1227,12 @@ textarea.form-control {
 
 .export-item img {
     width: 100%;
-    height: 220px;
+    height: 250px;
     object-fit: cover;
     display: block;
-    /* Remove bottom space */
 }
+
+@media (max-width: 768px) {}
 
 .appeal-box {
     background: #eef2f6;
@@ -1351,7 +1331,7 @@ header.scrolled .lang-switch {
     .nav-active {
         opacity: 1 !important;
         visibility: visible !important;
-        transform: scale(1) !important;
+        pointer-events: auto !important;
     }
 
     nav {
@@ -1368,7 +1348,8 @@ header.scrolled .lang-switch {
         visibility: hidden;
         transition: var(--transition-smooth);
         z-index: 999;
-        transform: scale(1.1);
+        pointer-events: none;
+        overflow-y: auto;
     }
 
     nav ul {
@@ -1567,14 +1548,14 @@ header.scrolled .lang-switch {
     .dropdown-menu {
         position: static;
         transform: none;
-        opacity: 1;
-        visibility: visible;
         background: transparent;
         box-shadow: none;
         border: none;
         margin-top: 1rem;
         padding: 0;
         width: 100%;
+        opacity: 1 !important;
+        visibility: visible !important;
     }
 
     .dropdown-menu li {
