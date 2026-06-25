@@ -5,6 +5,7 @@
     --primary-color: #0A192F;
     --primary-dark: #020c1b;
     --secondary-color: #B59049;
+    --secondary-text: #80652C;
     --secondary-light: #e6c57f;
     --text-color: #1A1A1A;
     --text-light: #F8F9FA;
@@ -43,14 +44,24 @@ h2,
 h3,
 h4,
 .content-block p {
-    word-break: keep-all;
-    overflow-wrap: anywhere;
+    word-break: normal;
+    overflow-wrap: break-word;
+    line-break: strict;
 }
 
 a {
     text-decoration: none;
     color: inherit;
     transition: var(--transition-smooth);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--secondary-light);
+    outline-offset: 4px;
 }
 
 ul {
@@ -107,10 +118,25 @@ header.scrolled .logo img {
     align-items: center;
 }
 
+.logo {
+    display: inline-flex;
+    align-items: center;
+}
+
 .logo img {
     height: 50px;
     width: auto;
+    display: block;
     transition: var(--transition-smooth);
+}
+
+/* Logo stays a transparent, full-colour PNG on every background — no white
+   plate, no colour inversion. On dark hero/menu it gets a soft white halo that
+   follows the logo's own shape so the navy wordmark stays legible, plus a faint
+   drop for depth — definition without any box. */
+header:not(.scrolled) .logo img,
+body.no-scroll header .logo img {
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.6)) drop-shadow(0 2px 5px rgba(0, 0, 0, 0.4));
 }
 
 nav>ul {
@@ -128,6 +154,14 @@ nav a {
     position: relative;
     padding: 10px 0;
     text-transform: uppercase;
+    /* Treat menu links as controls, not selectable text:
+       stops the long-press selection / drag / callout that re-layouts the label */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 nav a::after {
@@ -167,7 +201,8 @@ nav a:hover::after {
     z-index: 1000;
 }
 
-.dropdown:hover .dropdown-menu {
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu {
     opacity: 1;
     visibility: visible;
     transform: translateX(-50%) translateY(0);
@@ -217,7 +252,22 @@ header.scrolled .dropdown-menu {
     color: #fff;
 }
 
+/* Darker gold for legibility once the header turns white on scroll */
+header.scrolled .btn-contact {
+    color: var(--secondary-text);
+    border-color: var(--secondary-text);
+}
+
+header.scrolled .btn-contact:hover {
+    background-color: var(--secondary-text);
+    color: #fff;
+}
+
 .btn-contact::after {
+    display: none;
+}
+
+.mobile-toggle {
     display: none;
 }
 
@@ -304,24 +354,25 @@ header.scrolled .dropdown-menu {
 .btn-main {
     display: inline-block;
     background-color: var(--secondary-color);
-    color: #fff;
-    padding: 1rem 3.5rem;
-    font-family: var(--font-en);
-    font-size: 0.9rem;
+    color: var(--primary-color);
+    padding: 1rem 3rem;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
     font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    border-radius: 0;
+    letter-spacing: 0.08em;
+    word-break: keep-all;
+    border-radius: 2px;
     transition: var(--transition-smooth);
     position: relative;
     overflow: hidden;
+    box-shadow: 0 6px 18px rgba(181, 144, 73, 0.28);
 }
 
 .btn-main:hover {
-    background-color: #fff;
-    color: var(--primary-color);
+    background-color: var(--primary-color);
+    color: #fff;
     transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 12px 30px rgba(10, 25, 47, 0.28);
 }
 
 /* Sections */
@@ -342,7 +393,7 @@ section {
 
 .section-title p {
     font-family: var(--font-en);
-    color: var(--secondary-color);
+    color: var(--secondary-text);
     font-size: 0.9rem;
     letter-spacing: 0.3em;
     text-transform: uppercase;
@@ -356,6 +407,7 @@ section {
     color: var(--primary-color);
     font-weight: 700;
     letter-spacing: 0.05em;
+    text-wrap: balance;
 }
 
 /* Vertical Line Decoration */
@@ -585,9 +637,14 @@ footer {
 
 /* Animations */
 .fade-up {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-up.motion-ready {
     opacity: 0;
     transform: translateY(40px);
-    transition: opacity 1s cubic-bezier(0.2, 1, 0.3, 1), transform 1s cubic-bezier(0.2, 1, 0.3, 1);
+    transition: opacity 0.6s cubic-bezier(0.2, 1, 0.3, 1), transform 0.6s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
 .fade-up.visible {
@@ -669,7 +726,7 @@ footer {
 }
 
 .breadcrumb li a {
-    color: #888;
+    color: #595959;
 }
 
 .breadcrumb li a:hover {
@@ -694,6 +751,7 @@ footer {
 /* Subpage Content */
 .subpage-content {
     background: #fff;
+    padding: 5rem 2rem;
 }
 
 .content-block {
@@ -707,6 +765,7 @@ footer {
     border-bottom: 2px solid var(--secondary-color);
     padding-bottom: 0.5rem;
     display: inline-block;
+    text-wrap: balance;
 }
 
 .content-block p {
@@ -1062,6 +1121,7 @@ textarea.form-control {
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    scroll-margin-top: 110px;
 }
 
 .client-header {
@@ -1292,6 +1352,34 @@ header.scrolled .lang-switch {
     display: none;
 }
 
+.lang-switch a {
+    cursor: pointer;
+}
+
+/* Google Website Translate — hide its banner/chrome; we drive it from the
+   header JP | EN switch, so none of Google's own UI should ever be visible. */
+.goog-te-banner-frame,
+.goog-te-gadget,
+#google_translate_element,
+.skiptranslate {
+    display: none !important;
+}
+
+body {
+    top: 0 !important;
+}
+
+.goog-tooltip,
+.goog-te-balloon-frame {
+    display: none !important;
+}
+
+.goog-text-highlight {
+    background: none !important;
+    box-shadow: none !important;
+    color: inherit !important;
+}
+
 /* Utility */
 .no-scroll {
     overflow: hidden;
@@ -1340,6 +1428,7 @@ header.scrolled .lang-switch {
         left: 0;
         width: 100%;
         height: 100vh;
+        height: 100dvh;
         background: radial-gradient(circle at center, var(--primary-color) 0%, var(--primary-dark) 100%);
         display: flex;
         align-items: center;
@@ -1367,11 +1456,30 @@ header.scrolled .lang-switch {
         color: var(--text-light);
     }
 
+    /* Keep the logo above the full-screen menu */
+    .logo {
+        position: relative;
+        z-index: 1001;
+    }
+
+    /* While the menu is open, make the header bar itself disappear so the dark
+       menu reads top-to-bottom and the transparent logo sits on it cleanly */
+    body.no-scroll header,
+    body.no-scroll header.scrolled {
+        background: transparent;
+        box-shadow: none;
+        backdrop-filter: none;
+    }
+
     .mobile-toggle {
         display: block;
         position: relative;
         z-index: 1001;
         cursor: pointer;
+        border: 0;
+        padding: 0.45rem;
+        background: transparent;
+        color: inherit;
     }
 
     .mobile-toggle span {
@@ -1405,7 +1513,10 @@ header.scrolled .lang-switch {
 
     /* Hero Optimization */
     .hero-content h1 {
-        font-size: 2.5rem;
+        font-size: clamp(2rem, 9vw, 2.35rem);
+        line-height: 1.16;
+        letter-spacing: 0.045em;
+        overflow-wrap: normal;
     }
 
     .hero-content p {
@@ -1517,6 +1628,7 @@ header.scrolled .lang-switch {
     /* Page Headers */
     .page-header h1 {
         font-size: 2.2rem;
+        text-wrap: balance;
     }
 
     /* Modals */
@@ -1538,6 +1650,15 @@ header.scrolled .lang-switch {
         padding: 2.5rem 1.5rem;
     }
 
+    .subpage-content {
+        padding: 3.5rem 0;
+    }
+
+    .content-block h3 {
+        font-size: 1.4rem;
+        letter-spacing: 0.02em;
+    }
+
     /* Dropdown on mobile - Integrated List */
     .dropdown {
         display: block;
@@ -1551,7 +1672,7 @@ header.scrolled .lang-switch {
         background: transparent;
         box-shadow: none;
         border: none;
-        margin-top: 1rem;
+        margin-top: 0.6rem;
         padding: 0;
         width: 100%;
         opacity: 1 !important;
@@ -1559,14 +1680,26 @@ header.scrolled .lang-switch {
     }
 
     .dropdown-menu li {
-        margin: 1rem 0;
+        margin: 0.6rem 0 0;
     }
 
     .dropdown-menu a {
+        display: block;
+        width: fit-content;
+        margin: 0 auto;
         color: var(--secondary-light);
-        font-size: 1rem;
-        padding: 0.5rem;
-        opacity: 0.8;
+        font-size: 0.95rem;
+        padding: 0.4rem 0.6rem;
+        opacity: 1;
+    }
+
+    /* Tap/active feedback must suit the dark menu — drop the desktop white box
+       that made the label look shifted inside a wide highlight */
+    .dropdown-menu a:hover,
+    .dropdown-menu a:focus,
+    .dropdown-menu a:active {
+        background: transparent;
+        color: #fff;
     }
 
     .lang-switch {
@@ -1592,14 +1725,49 @@ header.scrolled .lang-switch {
     }
 
     .hero-content h1 {
-        font-size: 2.8rem;
-        letter-spacing: 0.1em;
+        font-size: clamp(2rem, 9vw, 2.35rem);
+        letter-spacing: 0.045em;
         margin-bottom: 1.5rem;
     }
 
     .hero-content p {
         font-size: 0.95rem;
         margin-bottom: 2.5rem;
+    }
+
+    .hero-content h1 {
+        text-wrap: balance;
+    }
+
+    /* Let centered Japanese copy wrap naturally instead of at desktop breaks.
+       Scoped to Japanese pages: English needs its <br> (no spaces around it). */
+    html[lang="ja"] .hero-content p br,
+    html[lang="ja"] .appeal-box p br,
+    html[lang="ja"] .pc-br {
+        display: none;
+    }
+
+    /* Keep Japanese headings from splitting mid-word on narrow screens */
+    .content-block h3,
+    .appeal-box h4,
+    .section-title h2 {
+        word-break: keep-all;
+    }
+
+    .appeal-box {
+        padding: 1.75rem 1.25rem;
+    }
+
+    .appeal-box h4 {
+        font-size: 1.15rem;
+        flex-wrap: wrap;
+    }
+
+    /* CTA buttons: tighter padding + no mid-word breaks on small screens */
+    .btn-main {
+        padding: 0.95rem 2rem;
+        letter-spacing: 0.04em;
+        font-size: 0.9rem;
     }
 
     /* Access Grid 2-Column on Mobile */
@@ -1636,5 +1804,68 @@ header.scrolled .lang-switch {
 
     .map-wrapper {
         height: 250px;
+    }
+}
+
+@media (max-width: 600px) {
+    .grid-2 {
+        grid-template-columns: 1fr !important;
+        gap: 1.25rem !important;
+    }
+
+    .access-card {
+        padding: 1.25rem !important;
+    }
+
+    .access-card h3 {
+        font-size: 1rem !important;
+        margin-bottom: 0.75rem !important;
+    }
+
+    .access-card .address {
+        font-size: 0.875rem !important;
+        line-height: 1.65 !important;
+    }
+
+    .map-container,
+    .map-placeholder {
+        height: 200px !important;
+    }
+
+    .hero-content {
+        padding: 0 1rem;
+    }
+
+    .company-table {
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    .company-table th,
+    .company-table td {
+        padding: 1rem 0.75rem;
+        overflow-wrap: anywhere;
+    }
+
+    .company-table th {
+        width: 38%;
+        white-space: normal;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+
+    .fade-up,
+    .fade-up.motion-ready {
+        opacity: 1 !important;
+        transform: none !important;
     }
 }

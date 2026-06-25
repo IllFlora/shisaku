@@ -16,7 +16,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }, observerOptions);
 
     const fadeElements = document.querySelectorAll('.fade-up');
-    fadeElements.forEach(el => observer.observe(el));
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    fadeElements.forEach(el => {
+        if (!reduceMotion) {
+            el.classList.add('motion-ready');
+            observer.observe(el);
+        } else {
+            el.classList.add('visible');
+        }
+    });
 
     // Parallax Effect for Hero
     window.addEventListener('scroll', () => {
@@ -117,18 +125,53 @@ document.addEventListener('DOMContentLoaded', () => {
     const nav = document.querySelector('nav');
 
     if (mobileToggle && nav) {
+        const navLinks = [...nav.querySelectorAll('a')];
+        const isJapanese = document.documentElement.lang === 'ja';
+
+        const setMenuState = (open, restoreFocus = false) => {
+            mobileToggle.classList.toggle('active', open);
+            nav.classList.toggle('nav-active', open);
+            document.body.classList.toggle('no-scroll', open);
+            mobileToggle.setAttribute('aria-expanded', String(open));
+            mobileToggle.setAttribute('aria-label', open
+                ? (isJapanese ? 'メニューを閉じる' : 'Close menu')
+                : (isJapanese ? 'メニューを開く' : 'Open menu'));
+
+            if (open && navLinks.length) {
+                navLinks[0].focus();
+            } else if (restoreFocus) {
+                mobileToggle.focus();
+            }
+        };
+
         mobileToggle.addEventListener('click', () => {
-            mobileToggle.classList.toggle('active');
-            nav.classList.toggle('nav-active');
-            document.body.classList.toggle('no-scroll');
+            const isOpen = nav.classList.contains('nav-active');
+            setMenuState(!isOpen, isOpen);
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && nav.classList.contains('nav-active')) {
+                setMenuState(false, true);
+            }
+
+            if (event.key === 'Tab' && nav.classList.contains('nav-active')) {
+                const focusable = [mobileToggle, ...navLinks];
+                const currentIndex = focusable.indexOf(document.activeElement);
+
+                if (event.shiftKey && currentIndex <= 0) {
+                    event.preventDefault();
+                    focusable[focusable.length - 1].focus();
+                } else if (!event.shiftKey && currentIndex === focusable.length - 1) {
+                    event.preventDefault();
+                    mobileToggle.focus();
+                }
+            }
         });
 
         // Close menu when a link is clicked
         nav.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
-                mobileToggle.classList.remove('active');
-                nav.classList.remove('nav-active');
-                document.body.classList.remove('no-scroll');
+                setMenuState(false);
             });
         });
     }

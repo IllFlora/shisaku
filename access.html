@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Access - アクセス | 株式会社Grand Trading</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=20260625-6">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
@@ -17,26 +17,23 @@
             <a href="index.html" class="logo">
                 <img src="images/logo.png" alt="Grand Trading">
             </a>
-            <div class="mobile-toggle" id="mobile-toggle">
+            <button class="mobile-toggle" id="mobile-toggle" type="button" aria-label="メニューを開く"
+                aria-controls="global-nav" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
-            <nav>
+            </button>
+            <nav id="global-nav">
                 <ul>
                     <li><a href="index.html">ホーム</a></li>
                     <li><a href="auction.html">オークション</a></li>
                     <li><a href="export.html">海外輸出</a></li>
-                    <li class="dropdown">
-                        <a href="company.html">会社概要</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="clients.html">対象のお客様</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="clients.html">対象のお客様</a></li>
+                    <li><a href="company.html">会社概要</a></li>
                     <li><a href="access.html">アクセス</a></li>
                     <li><a href="contact.html" class="btn-contact">お問い合わせ</a></li>
-                    <li class="lang-switch">
-                        <a href="access.html" class="active">JP</a> | <a href="en/access.html">EN</a>
+                    <li class="lang-switch notranslate" translate="no">
+                        <a href="#" data-lang="ja" class="active">JP</a> | <a href="#" data-lang="en">EN</a>
                     </li>
                 </ul>
             </nav>
@@ -74,7 +71,8 @@
                     <h3><i class="fa-solid fa-location-dot"></i> 千葉会場 (本社)</h3>
                     <p class="address">〒276-0034<br>千葉県八千代市平戸403</p>
                     <div class="map-container">
-                        <iframe src="https://www.google.com/maps?q=千葉県八千代市平戸403&output=embed" allowfullscreen=""
+                        <iframe title="千葉会場（本社）の地図"
+                            src="https://www.google.com/maps?q=千葉県八千代市平戸403&output=embed" allowfullscreen=""
                             loading="lazy"></iframe>
                     </div>
                 </div>
@@ -86,7 +84,7 @@
                     <div class="map-container">
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3215.123456789012!2d137.9815!3d36.2234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzbCsDEzJzI0LjIiTiAxMzfCsDU4JzUzLjQiRQ!5e0!3m2!1sja!2sjp!4v1600000000000!5m2!1sja!2sjp"
-                            allowfullscreen="" loading="lazy"></iframe>
+                            title="長野会場の地図" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
 
@@ -95,7 +93,8 @@
                     <h3><i class="fa-solid fa-location-dot"></i> 茨城会場</h3>
                     <p class="address">〒315-0052<br>茨城県かすみがうら市下稲吉784</p>
                     <div class="map-container">
-                        <iframe src="https://www.google.com/maps?q=茨城県かすみがうら市下稲吉784&output=embed" allowfullscreen=""
+                        <iframe title="茨城会場の地図"
+                            src="https://www.google.com/maps?q=茨城県かすみがうら市下稲吉784&output=embed" allowfullscreen=""
                             loading="lazy"></iframe>
                     </div>
                 </div>
@@ -105,7 +104,8 @@
                     <h3><i class="fa-solid fa-location-dot"></i> 福島会場</h3>
                     <p class="address">〒963-8061<br>福島県郡山市富久山町福原字陣場196-1</p>
                     <div class="map-container">
-                        <iframe src="https://www.google.com/maps?q=福島県郡山市富久山町福原字陣場196-1&output=embed" allowfullscreen=""
+                        <iframe title="福島会場の地図"
+                            src="https://www.google.com/maps?q=福島県郡山市富久山町福原字陣場196-1&output=embed" allowfullscreen=""
                             loading="lazy"></iframe>
                     </div>
                 </div>
@@ -115,7 +115,8 @@
                     <h3><i class="fa-solid fa-location-dot"></i> 三重会場</h3>
                     <p class="address">〒510-0007<br>三重県四日市市別名1-14-4</p>
                     <div class="map-container">
-                        <iframe src="https://www.google.com/maps?q=三重県四日市市別名1-14-4&output=embed" allowfullscreen=""
+                        <iframe title="三重会場の地図"
+                            src="https://www.google.com/maps?q=三重県四日市市別名1-14-4&output=embed" allowfullscreen=""
                             loading="lazy"></iframe>
                     </div>
                 </div>
@@ -125,7 +126,8 @@
                     <h3><i class="fa-solid fa-location-dot"></i> 山梨会場</h3>
                     <p class="address">〒400-0043<br>山梨県甲府市国母4丁目21-18</p>
                     <div class="map-container">
-                        <iframe src="https://www.google.com/maps?q=山梨県甲府市国母4丁目21-18&output=embed" allowfullscreen=""
+                        <iframe title="山梨会場の地図"
+                            src="https://www.google.com/maps?q=山梨県甲府市国母4丁目21-18&output=embed" allowfullscreen=""
                             loading="lazy"></iframe>
                     </div>
                 </div>
@@ -151,6 +153,7 @@
     </footer>
 
     <script src="js/script.js"></script>
+    <script src="js/translate.js?v=20260625-6"></script>
 
     <style>
         .access-card {
