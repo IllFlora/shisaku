@@ -811,6 +811,100 @@ footer {
     color: #444;
 }
 
+/* ============================================================
+   Reusable components — replace scattered inline-style hacks.
+   ============================================================ */
+
+/* Narrow reading column for text-heavy subpages (privacy, contact, export) */
+.container.measure {
+    max-width: 880px;
+}
+
+/* Centered CTA / button wrapper */
+.btn-center {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+/* Required-field marker in forms */
+.required {
+    color: #c0392b;
+    font-weight: 600;
+}
+
+/* Callout / info panel. Add .accent for the gold left-border variant. */
+.note-box {
+    background: #f9f9f9;
+    padding: 1.5rem 2rem;
+    border-radius: 4px;
+    margin-bottom: 2rem;
+}
+
+.note-box.accent {
+    border-left: 5px solid var(--secondary-color);
+    border-radius: 0 4px 4px 0;
+}
+
+.note-box > p {
+    margin-bottom: 0.5rem;
+}
+
+.note-box > p:last-child {
+    margin-bottom: 0;
+}
+
+.note-box .note-lead {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+}
+
+/* Legal/policy document body: gold-accent subheadings + indented lists */
+.policy-body {
+    margin-top: 2rem;
+}
+
+.policy-body > h4 {
+    font-size: 1.15rem;
+    color: var(--primary-color);
+    border-left: 4px solid var(--secondary-color);
+    padding-left: 0.75rem;
+    margin: 2.5rem 0 1rem;
+    line-height: 1.5;
+}
+
+.policy-body > h4:first-child {
+    margin-top: 0;
+}
+
+.policy-body ol,
+.policy-body ul {
+    margin-left: 1.5rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+.policy-body ul {
+    list-style-type: circle;
+    margin-top: 0.5rem;
+}
+
+/* Lead heading for the company greeting (long bilingual phrase, like the
+   mission heading — "Made in Japan" is kept intact via a .nowrap span). */
+.lead-heading {
+    font-size: 1.4rem;
+    font-family: var(--font-heading-jp);
+    line-height: 1.6;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    letter-spacing: 0.02em;
+    /* Break at punctuation/word boundaries, never mid-word (e.g. 繋/ぎ, 世界/へ):
+       keep-all stops CJK breaking between characters, overflow-wrap:normal stops
+       the Latin run from forcing an emergency break. */
+    word-break: keep-all;
+    overflow-wrap: normal;
+}
+
 /* Company Table */
 .company-table {
     width: 100%;
@@ -915,6 +1009,8 @@ textarea.form-control {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     transition: var(--transition-smooth);
     border-bottom: 3px solid transparent;
+    color: inherit;
+    text-decoration: none;
 }
 
 .client-card:hover {
@@ -1858,6 +1954,14 @@ body {
     .cta-box h3 {
         font-size: 1.35rem;
         letter-spacing: 0.02em;
+    }
+
+    .note-box {
+        padding: 1.25rem 1.25rem;
+    }
+
+    .policy-body > h4 {
+        font-size: 1.08rem;
     }
 
     /* Mission copy: smaller and denser; let the centered lines fill evenly and
