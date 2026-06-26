@@ -612,10 +612,8 @@ footer {
 }
 
 .footer-simple .logo img {
-    height: 30px;
+    height: 32px;
     width: auto;
-    opacity: 0.7;
-    filter: grayscale(1);
 }
 
 .footer-nav-simple {
@@ -638,7 +636,7 @@ footer {
 }
 
 .copyright-simple {
-    color: #ccc;
+    color: #8a9099;
     font-family: var(--font-en);
     font-size: 0.7rem;
     letter-spacing: 0.05em;
@@ -1567,7 +1565,9 @@ body {
         pointer-events: auto !important;
     }
 
-    nav {
+    /* Scoped to the header menu only — must NOT capture the footer <nav>,
+       which was being turned into a hidden full-screen overlay. */
+    #global-nav {
         position: fixed;
         top: 0;
         left: 0;
@@ -1586,18 +1586,18 @@ body {
         overflow-y: auto;
     }
 
-    nav ul {
+    #global-nav ul {
         flex-direction: column;
         align-items: center;
         gap: 2rem;
     }
 
-    nav a {
+    #global-nav a {
         font-size: 1.2rem;
         color: var(--text-light);
     }
 
-    header.scrolled nav a {
+    header.scrolled #global-nav a {
         color: var(--text-light);
     }
 
