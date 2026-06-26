@@ -1,0 +1,8 @@
+# robots.txt — 株式会社Grand Trading
+# クロール全許可。サイトマップの場所を検索エンジンに伝えます。
+# ※ ドメイン取得後、下の example.com を正式ドメインに置換してください（SEO-NOTES.md 参照）。
+
+User-agent: *
+Allow: /
+
+Sitemap: https://example.com/sitemap.xml
