@@ -10,7 +10,7 @@
 | `<meta name="description">` | ✅ 全8ページ | 地域・業種・活動を自然文で |
 | canonical URL | ✅ 相対URL | ドメイン非依存。github.io でも独自ドメインでも自動で正しく動く |
 | OGP / Twitter Card | ✅ 全8ページ | SNS共有時のタイトル・説明・画像 |
-| favicon | ✅ `favicon.svg` | 紺×金のグローブ。タブ／検索結果アイコン |
+| favicon | ✅ `favicon.ico`（＋32/48 PNG・apple-touch） | 純正ブランドロゴのシンボルマーク（地球儀＋GT）を切り出し |
 | JSON-LD 構造化データ | ✅ | index=Organization+WebSite、各下層=BreadcrumbList |
 | robots.txt | ✅ | 全クロール許可＋サイトマップ場所（**要ドメイン置換**） |
 | sitemap.xml | ✅ | 8ページ（**要ドメイン置換**） |
