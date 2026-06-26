@@ -77,6 +77,11 @@ ul {
     font-family: var(--font-heading-en);
 }
 
+/* Keep a short phrase (e.g. an English term inside JP copy) from breaking across lines */
+.nowrap {
+    white-space: nowrap;
+}
+
 /* Header */
 header {
     position: fixed;
@@ -1804,6 +1809,45 @@ body {
 
     .map-wrapper {
         height: 250px;
+    }
+
+    /* Tighten the heading-to-body rhythm: the desktop 5rem gap + tall divider
+       left an oversized void under section titles on narrow screens */
+    .section-title {
+        margin-bottom: 2.75rem;
+    }
+
+    .section-title::after {
+        height: 40px;
+        margin-top: 1.5rem;
+    }
+
+    /* Mission copy: smaller and denser; let the centered lines fill evenly and
+       avoid ending on a lone trailing fragment. */
+    .mission-text {
+        font-size: 1.05rem;
+        line-height: 1.95;
+    }
+
+    .mission-text p {
+        text-wrap: pretty;
+    }
+
+    /* The bilingual lead heading is long; scale it with the viewport so each
+       clause keeps to its own line ("…繋ぎ、" / "Made in Japan…") instead of
+       splitting a word — verified 2 lines across 360–414px wide phones. */
+    .section-title h2.mission-heading {
+        font-size: clamp(1.4rem, 6.2vw, 1.75rem);
+        letter-spacing: 0.02em;
+        overflow-wrap: normal;
+    }
+
+    /* Short marketing paragraphs (e.g. the auction CTA): keep lines dense and
+       even (word-break stays normal), just avoid a lone trailing fragment.
+       Specific compounds that must not split (e.g. 専任スタッフ) are wrapped
+       in .nowrap spans in the markup. */
+    .jp-flow {
+        text-wrap: pretty;
     }
 }
 
