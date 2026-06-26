@@ -786,6 +786,31 @@ footer {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
+/* Centered call-to-action panel (e.g. the auction participation block).
+   A purpose-built component: a left-aligned .content-block was previously
+   forced into a centered CTA with inline styles, which made its inline-block,
+   keep-all heading overflow and read as left-aligned. */
+.cta-box {
+    text-align: center;
+    background: #f0f4f8;
+    padding: 4rem 2rem;
+    border-radius: 6px;
+}
+
+.cta-box h3 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    text-wrap: balance;
+}
+
+.cta-box p {
+    max-width: 640px;
+    margin: 0 auto 2rem;
+    line-height: 1.9;
+    color: #444;
+}
+
 /* Company Table */
 .company-table {
     width: 100%;
@@ -1812,14 +1837,27 @@ body {
     }
 
     /* Tighten the heading-to-body rhythm: the desktop 5rem gap + tall divider
-       left an oversized void under section titles on narrow screens */
+       left an oversized void under section titles. Keep the gold accent short
+       so it reads as a deliberate connector, not a line floating in whitespace. */
     .section-title {
-        margin-bottom: 2.75rem;
+        margin-bottom: 2rem;
     }
 
     .section-title::after {
-        height: 40px;
-        margin-top: 1.5rem;
+        height: 26px;
+        margin-top: 1.1rem;
+    }
+
+    /* Auction CTA panel on mobile: a touch tighter; the heading is a normal
+       centered block here (no inline-block / keep-all), so it wraps and
+       centers cleanly instead of overflowing. */
+    .cta-box {
+        padding: 2.75rem 1.5rem;
+    }
+
+    .cta-box h3 {
+        font-size: 1.35rem;
+        letter-spacing: 0.02em;
     }
 
     /* Mission copy: smaller and denser; let the centered lines fill evenly and
