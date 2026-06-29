@@ -26,19 +26,37 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Parallax Effect for Hero
-    window.addEventListener('scroll', () => {
-        const scrolled = window.scrollY;
-        const heroBg = document.querySelector('.hero-slider');
-        const pageHeader = document.querySelector('.page-header');
+    // Smooth scroll effects: hero parallax + sticky header, batched in one
+    // requestAnimationFrame-throttled, passive scroll listener (no layout
+    // thrash, GPU-accelerated transform — keeps scrolling buttery).
+    const headerEl = document.querySelector('header');
+    const heroSlider = document.querySelector('.hero-slider');
+    let latestScrollY = window.scrollY;
+    let scrollTicking = false;
 
-        if (heroBg) {
-            heroBg.style.transform = `translateY(${scrolled * 0.5}px)`;
+    const onScrollFrame = () => {
+        const y = latestScrollY;
+        // Subtle parallax only while the hero is on screen; clamp past it so we
+        // stop writing styles once it's scrolled away.
+        if (heroSlider) {
+            const limit = window.innerHeight;
+            const shift = (y < limit ? y : limit) * 0.3;
+            heroSlider.style.transform = `translate3d(0, ${shift}px, 0)`;
         }
-        if (pageHeader) {
-            pageHeader.style.backgroundPositionY = `${scrolled * 0.5}px`;
+        if (headerEl) {
+            headerEl.classList.toggle('scrolled', y > 50);
         }
-    });
+        scrollTicking = false;
+    };
+
+    window.addEventListener('scroll', () => {
+        latestScrollY = window.scrollY;
+        if (!scrollTicking) {
+            scrollTicking = true;
+            requestAnimationFrame(onScrollFrame);
+        }
+    }, { passive: true });
+    onScrollFrame(); // set initial state
 
     // Hero Slider
     const slides = document.querySelectorAll('.slide');
@@ -69,19 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Sticky Header
-    const header = document.querySelector('header');
-    const checkScroll = () => {
-        if (!header) return;
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    };
-
-    window.addEventListener('scroll', checkScroll);
-    checkScroll(); // Initial check
+    // (Sticky header is handled in the rAF scroll loop above.)
 
     // Client Details Modals
     const modalOverlay = document.getElementById('modal-overlay');
