@@ -9,7 +9,7 @@
         content="株式会社Grand Tradingは、千葉・長野を拠点に全国6会場でBtoBライブ式古物オークションを運営。中古品・伝統工芸品の海外輸出（中国・タイ・フィリピン等）と買取も手がけ、「Made in Japan」を世界へ届けます。">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#0A192F">
-    <link rel="canonical" href="index.html">
+    <link rel="canonical" href="./">
 
     <!-- Favicon -->
     <link rel="icon" href="favicon.ico" sizes="any">
@@ -24,15 +24,22 @@
     <meta property="og:title" content="株式会社Grand Trading｜古物オークション・海外輸出・買取">
     <meta property="og:description"
         content="千葉・長野を拠点に全国6会場でBtoBライブ式古物オークションを運営。中古品の海外輸出・買取も。「Made in Japan」を世界へ。">
-    <meta property="og:url" content="index.html">
-    <meta property="og:image" content="images/hero1.jpg">
+    <meta property="og:url" content="https://illflora.github.io/shisaku/">
+    <meta property="og:image" content="https://illflora.github.io/shisaku/images/hero1.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="株式会社Grand Trading｜古物オークション・海外輸出・買取">
     <meta name="twitter:description"
         content="千葉・長野を拠点に全国6会場でBtoBライブ式古物オークションを運営。中古品の海外輸出・買取も。">
-    <meta name="twitter:image" content="images/hero1.jpg">
+    <meta name="twitter:image" content="https://illflora.github.io/shisaku/images/hero1.jpg">
 
-    <link rel="stylesheet" href="css/style.css?v=20260627-2">
+    <!-- LCP image + fonts: discovered early, loaded in parallel with the CSS -->
+    <link rel="preload" as="image" href="images/hero1.jpg" fetchpriority="high">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Lato:wght@300;400;700&display=swap">
+    <link rel="stylesheet" href="css/style.css?v=20260702-1">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <!-- 構造化データ: Organization + WebSite -->
@@ -45,31 +52,55 @@
           "@id": "#organization",
           "name": "株式会社Grand Trading",
           "alternateName": ["Grand Trading Co., Ltd.", "グランドトレーディング"],
-          "url": "index.html",
-          "logo": "images/logo.png",
-          "image": "images/hero1.jpg",
+          "url": "https://illflora.github.io/shisaku/",
+          "logo": "https://illflora.github.io/shisaku/images/logo.png",
+          "image": "https://illflora.github.io/shisaku/images/hero1.jpg",
           "description": "千葉・長野を拠点に全国6会場でBtoBライブ式古物オークションを運営し、中古品・伝統工芸品の海外輸出（中国・タイ・フィリピン等）と買取を手がける古物商です。",
           "foundingDate": "2022-05-01",
           "founder": { "@type": "Person", "name": "大澤 恭祐" },
-          "numberOfEmployees": 13,
+          "numberOfEmployees": { "@type": "QuantitativeValue", "value": 13 },
           "email": "info@gratrajapan.com",
-          "address": {
-            "@type": "PostalAddress",
-            "postalCode": "276-0034",
-            "addressRegion": "千葉県",
-            "addressLocality": "八千代市",
-            "streetAddress": "平戸403",
-            "addressCountry": "JP"
+          "address": [
+            {
+              "@type": "PostalAddress",
+              "postalCode": "276-0034",
+              "addressRegion": "千葉県",
+              "addressLocality": "八千代市",
+              "streetAddress": "平戸403",
+              "addressCountry": "JP"
+            },
+            {
+              "@type": "PostalAddress",
+              "postalCode": "390-0821",
+              "addressRegion": "長野県",
+              "addressLocality": "松本市",
+              "streetAddress": "筑摩1-6-9",
+              "addressCountry": "JP"
+            }
+          ],
+          "identifier": {
+            "@type": "PropertyValue",
+            "name": "古物商許可番号（千葉県公安委員会）",
+            "value": "第441350001090号"
           },
           "areaServed": ["千葉県", "長野県", "茨城県", "福島県", "三重県", "山梨県"],
           "knowsAbout": ["古物オークション", "リユース", "海外輸出", "買取", "古物商"],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "事業内容",
+            "itemListElement": [
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "BtoBライブ式古物オークション（グランドオークション）", "url": "https://illflora.github.io/shisaku/auction.html" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "中古品・リユース品の海外輸出", "url": "https://illflora.github.io/shisaku/export.html" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "各種買取（行政・店舗・業者・個人）", "url": "https://illflora.github.io/shisaku/clients.html" } }
+            ]
+          },
           "slogan": "『不要』と『必要』を繋ぎ、Made in Japanを世界へ"
         },
         {
           "@type": "WebSite",
           "@id": "#website",
           "name": "株式会社Grand Trading",
-          "url": "index.html",
+          "url": "https://illflora.github.io/shisaku/",
           "publisher": { "@id": "#organization" },
           "inLanguage": "ja"
         }
@@ -80,12 +111,15 @@
 
 <body>
 
+    <a class="skip-link" href="#main">本文へスキップ</a>
+
     <!-- Header -->
     <header>
         <div class="header-container">
             <a href="index.html" class="logo">
                 <img src="images/logo.png" alt="Grand Trading">
             </a>
+            <a href="contact.html" class="btn-contact header-contact-sp">お問い合わせ</a>
             <button class="mobile-toggle" id="mobile-toggle" type="button" aria-label="メニューを開く"
                 aria-controls="global-nav" aria-expanded="false">
                 <span></span>
@@ -109,18 +143,20 @@
         </div>
     </header>
 
+    <main id="main" tabindex="-1">
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-slider">
             <div class="slide active" style="background-image: url('images/hero1.jpg');"></div>
-            <div class="slide" style="background-image: url('images/hero2.jpg');"></div>
-            <div class="slide" style="background-image: url('images/hero3.jpg');"></div>
+            <div class="slide" data-bg="images/hero2.jpg"></div>
+            <div class="slide" data-bg="images/hero3.jpg"></div>
         </div>
         <div class="hero-overlay"></div>
 
         <div class="hero-content fade-up">
-            <h1>Connecting Japan's<br>Tradition to the Future</h1>
-            <p>日本の価値ある文化を、世界中の必要とする人々へ。<br>私たちは「Used in Japan」の普及と発展をリードします。</p>
+            <p class="hero-en">Connecting Japan's<br>Tradition to the Future</p>
+            <h1 class="hero-ja">日本の価値ある文化を、世界中の必要とする人々へ。<br>私たちは「Used in Japan」の普及と発展をリードします。</h1>
 
         </div>
     </section>
@@ -199,7 +235,7 @@
                     <div class="card-content">
                         <h3>Grand Auction</h3>
                         <p>どこからでも出品可能。全国6会場で運営中。<br>ライブ式古物オークションを開催しています。</p>
-                        <a href="auction.html" class="link-arrow">MORE DETAILS <i
+                        <a href="auction.html" class="link-arrow" aria-label="Grand Auction（グランドオークション）の詳細">MORE DETAILS <i
                                 class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
@@ -211,7 +247,7 @@
                     <div class="card-content">
                         <h3>Overseas Export</h3>
                         <p>中国、タイ、フィリピンを中心とした世界各国への輸出事業。現地のニーズに合わせたマーケティングと物流ネットワークで、日本の商品をグローバルに展開します。</p>
-                        <a href="export.html" class="link-arrow">MORE DETAILS <i
+                        <a href="export.html" class="link-arrow" aria-label="Overseas Export（海外輸出事業）の詳細">MORE DETAILS <i
                                 class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
@@ -219,7 +255,16 @@
         </div>
     </section>
 
+    <!-- Closing CTA -->
+    <section class="container">
+        <div class="cta-box fade-up">
+            <h2>お気軽にご相談ください</h2>
+            <p>オークションへのご参加・ご出品、買取、海外輸出のご相談など、お気軽にお問い合わせください。</p>
+            <a href="contact.html" class="btn-main">お問い合わせはこちら</a>
+        </div>
+    </section>
 
+    </main>
 
     <!-- Footer -->
     <footer>
@@ -240,7 +285,7 @@
 
 
 
-    <script src="js/script.js?v=20260627-2"></script>
+    <script src="js/script.js?v=20260702-1"></script>
     <script src="js/translate.js?v=20260625-6"></script>
 
 </body>

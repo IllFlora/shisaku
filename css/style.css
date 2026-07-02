@@ -1,5 +1,6 @@
 /* Google Fonts Import */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Lato:wght@300;400;700&display=swap');
+/* Fonts are loaded via <link rel="preconnect">+<link rel="stylesheet"> in each
+   page's <head> (parallel, non-chained) instead of a render-blocking @import. */
 
 :root {
     --primary-color: #0A192F;
@@ -60,7 +61,7 @@ button:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-    outline: 3px solid var(--secondary-light);
+    outline: 3px solid var(--secondary-text);
     outline-offset: 4px;
 }
 
@@ -82,6 +83,25 @@ ul {
     white-space: nowrap;
 }
 
+/* Skip link for keyboard/screen-reader users */
+.skip-link {
+    position: fixed;
+    top: 0;
+    left: -9999px;
+    z-index: 2000;
+    background: var(--primary-color);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+}
+
+.skip-link:focus {
+    left: 0;
+}
+
+main:focus {
+    outline: none;
+}
+
 /* Header */
 header {
     position: fixed;
@@ -91,10 +111,6 @@ header {
     padding: 1.5rem 0;
     transition: var(--transition-smooth);
     background: transparent;
-}
-
-section {
-    padding: var(--section-padding) 0;
 }
 
 header.scrolled {
@@ -184,64 +200,6 @@ nav a:hover::after {
     width: 100%;
 }
 
-/* Dropdown Menu */
-.dropdown {
-    position: relative;
-}
-
-.dropdown-menu {
-    display: block;
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%) translateY(15px);
-    background: #fff;
-    min-width: 160px;
-    box-shadow: 0 15px 40px rgba(10, 25, 47, 0.1);
-    opacity: 0;
-    visibility: hidden;
-    transition: var(--transition-smooth);
-    padding: 1rem 0;
-    border-radius: 8px;
-    z-index: 1000;
-}
-
-.dropdown:hover .dropdown-menu,
-.dropdown:focus-within .dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-50%) translateY(0);
-}
-
-header.scrolled .dropdown-menu {
-    border: 1px solid rgba(10, 25, 47, 0.05);
-}
-
-.dropdown-menu li {
-    display: block;
-    margin: 0;
-}
-
-.dropdown-menu a {
-    display: block;
-    padding: 0.6rem 1.2rem;
-    color: var(--text-color);
-    /* Always dark text in dropdown */
-    font-size: 0.85rem;
-    white-space: nowrap;
-    transition: background 0.3s;
-    text-align: center;
-}
-
-.dropdown-menu a:hover {
-    background: #f9f9f9;
-    color: var(--secondary-color);
-}
-
-.dropdown-menu a::after {
-    display: none;
-}
-
 .btn-contact {
     border: 1px solid var(--secondary-color);
     color: var(--secondary-color);
@@ -269,6 +227,11 @@ header.scrolled .btn-contact:hover {
 }
 
 .btn-contact::after {
+    display: none;
+}
+
+/* Compact header contact button — only shown alongside the hamburger */
+.header-contact-sp {
     display: none;
 }
 
@@ -343,7 +306,7 @@ header.scrolled .btn-contact:hover {
     padding: 0 2rem;
 }
 
-.hero-content h1 {
+.hero-content .hero-en {
     font-family: var(--font-heading-en);
     font-size: 5rem;
     font-weight: 400;
@@ -353,7 +316,7 @@ header.scrolled .btn-contact:hover {
     text-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-.hero-content p {
+.hero-content .hero-ja {
     font-size: 1.1rem;
     margin-bottom: 3rem;
     letter-spacing: 0.05em;
@@ -536,67 +499,6 @@ section {
     transform: translateX(5px);
 }
 
-/* Topics List */
-.topics-list {
-    border-top: 1px solid #E0E0E0;
-}
-
-.topics-item {
-    padding: 2rem 0;
-    border-bottom: 1px solid #E0E0E0;
-    display: flex;
-    align-items: center;
-    transition: background-color 0.3s;
-}
-
-.topics-item:hover {
-    background-color: rgba(0, 0, 0, 0.02);
-}
-
-.topics-date {
-    font-family: var(--font-en);
-    color: #888;
-    font-size: 0.9rem;
-    width: 120px;
-}
-
-.topics-cat {
-    background: var(--primary-color);
-    color: #fff;
-    padding: 4px 12px;
-    font-size: 0.75rem;
-    font-family: var(--font-en);
-    letter-spacing: 0.05em;
-    margin-right: 2rem;
-    min-width: 80px;
-    text-align: center;
-}
-
-.topics-title {
-    font-weight: 500;
-    flex: 1;
-    font-size: 1.1rem;
-}
-
-.view-all-container {
-    text-align: right;
-    margin-top: 3rem;
-}
-
-.view-all-btn {
-    font-family: var(--font-en);
-    font-size: 0.9rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    color: var(--primary-color);
-    border-bottom: 1px solid var(--primary-color);
-    padding-bottom: 5px;
-}
-
-.view-all-btn:hover {
-    color: var(--secondary-color);
-    border-color: var(--secondary-color);
-}
 
 
 /* Footer - Ultra Minimalist */
@@ -721,18 +623,22 @@ footer {
     z-index: 2;
 }
 
-.page-header h1 {
+.page-header .ph-en {
     font-family: var(--font-heading-en);
     font-size: 3.5rem;
     margin-bottom: 1rem;
     letter-spacing: 0.05em;
+    /* was an <h1>; keep the UA-bold look now that it is a <p> */
+    font-weight: 700;
 }
 
-.page-header p {
+.page-header .ph-ja {
     font-family: var(--font-body);
     font-size: 1.1rem;
     letter-spacing: 0.1em;
     opacity: 0.9;
+    /* now an <h1>; neutralise the UA bold */
+    font-weight: 400;
 }
 
 /* Breadcrumb */
@@ -785,7 +691,7 @@ footer {
     margin-bottom: 5rem;
 }
 
-.content-block h3 {
+.content-block h2 {
     font-size: 1.8rem;
     color: var(--primary-color);
     margin-bottom: 1.5rem;
@@ -819,7 +725,7 @@ footer {
     border-radius: 6px;
 }
 
-.cta-box h3 {
+.cta-box h2 {
     font-size: 1.8rem;
     color: var(--primary-color);
     margin-bottom: 1.5rem;
@@ -886,7 +792,7 @@ footer {
     margin-top: 2rem;
 }
 
-.policy-body > h4 {
+.policy-body > h3 {
     font-size: 1.15rem;
     color: var(--primary-color);
     border-left: 4px solid var(--secondary-color);
@@ -895,7 +801,7 @@ footer {
     line-height: 1.5;
 }
 
-.policy-body > h4:first-child {
+.policy-body > h3:first-child {
     margin-top: 0;
 }
 
@@ -943,16 +849,51 @@ footer {
 
 .company-table th {
     background-color: #f9f9f9;
-    width: 25%;
+    width: 30%;
+    white-space: nowrap;
     font-weight: 700;
     color: var(--primary-color);
+}
+
+/* Access page — venue cards + maps (moved from an inline <style> block that
+   used to sit at the end of access.html's <body>) */
+.access-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.access-card:hover {
+    transform: translateY(-5px);
+}
+
+.access-card h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.access-card .address {
+    margin-bottom: 1.5rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
 }
 
 /* Map */
 .map-container {
     width: 100%;
-    height: 450px;
-    background-color: #ddd;
+    height: 250px;
+    background: #eee;
     margin-top: 2rem;
     border-radius: 4px;
     overflow: hidden;
@@ -988,7 +929,6 @@ footer {
 }
 
 .form-control:focus {
-    outline: none;
     border-color: var(--secondary-color);
     background: #fff;
     box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.1);
@@ -1080,132 +1020,6 @@ textarea.form-control {
     margin-bottom: 0;
 }
 
-/* Modals */
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(10, 25, 47, 0.8);
-    backdrop-filter: blur(5px);
-    z-index: 2000;
-    opacity: 0;
-    visibility: hidden;
-    transition: var(--transition-smooth);
-}
-
-.modal-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.client-modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -40%);
-    width: 90%;
-    max-width: 800px;
-    background: #fff;
-    z-index: 2001;
-    border-radius: 12px;
-    box-shadow: 0 30px 100px rgba(10, 25, 47, 0.3);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
-    max-height: 85vh;
-    overflow-y: auto;
-}
-
-.client-modal.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translate(-50%, -50%);
-}
-
-.modal-close {
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: #888;
-    transition: color 0.3s;
-    z-index: 10;
-}
-
-.modal-close:hover {
-    color: var(--secondary-color);
-}
-
-.modal-content {
-    padding: 3rem;
-}
-
-.modal-header {
-    text-align: center;
-    margin-bottom: 2rem;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 2rem;
-}
-
-.modal-header i {
-    font-size: 3rem;
-    color: var(--secondary-color);
-    margin-bottom: 1rem;
-}
-
-.modal-header h3 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: 0;
-}
-
-.modal-body h4 {
-    font-size: 1.2rem;
-    color: var(--primary-color);
-    margin-bottom: 1.5rem;
-    font-weight: 700;
-    line-height: 1.6;
-}
-
-.modal-body p {
-    margin-bottom: 1.5rem;
-    color: #444;
-    line-height: 1.9;
-}
-
-.modal-body .note {
-    font-size: 0.85rem;
-    color: #888;
-    margin-top: 2rem;
-}
-
-.modal-list h5 {
-    font-size: 1rem;
-    color: var(--secondary-color);
-    margin-bottom: 0.5rem;
-    margin-top: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.modal-list p {
-    margin-bottom: 0;
-    font-size: 0.9rem;
-    padding-left: 1.5rem;
-}
-
-/* Cursor pointer for clickable cards */
-.client-card[data-modal] {
-    cursor: pointer;
-}
-
 /* Auction Items Grid */
 .items-grid {
     display: grid;
@@ -1286,7 +1100,7 @@ textarea.form-control {
     color: var(--secondary-color);
 }
 
-.client-header h4 {
+.client-header h3 {
     font-size: 1.5rem;
     margin: 0;
     color: var(--primary-color);
@@ -1299,26 +1113,10 @@ textarea.form-control {
     margin-bottom: 1rem;
 }
 
-.client-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    margin: 2rem 0;
-}
-
-.client-list .list-item {
-    background: #f9f9f9;
-    padding: 1rem;
-    border-radius: 4px;
-}
-
-.client-list h6 {
-    color: var(--secondary-color);
-    margin-bottom: 0.5rem;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+.client-body .note {
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 2rem;
 }
 
 .flow-box {
@@ -1328,7 +1126,7 @@ textarea.form-control {
     margin-top: 2rem;
 }
 
-.flow-box h5 {
+.flow-box h4 {
     font-size: 1.2rem;
     margin-bottom: 1.5rem;
     color: var(--primary-color);
@@ -1389,10 +1187,6 @@ textarea.form-control {
     margin-top: 0.5rem;
 }
 
-.company-table th {
-    white-space: nowrap;
-    width: 30%;
-}
 
 @media (max-width: 768px) {
     .ceo-signature {
@@ -1450,7 +1244,7 @@ textarea.form-control {
     border: 1px solid #dae1e7;
 }
 
-.appeal-box h4 {
+.appeal-box h3 {
     font-size: 1.4rem;
     color: var(--primary-color);
     margin-bottom: 1rem;
@@ -1536,33 +1330,26 @@ body {
 
 
 /* Responsive Media Queries */
-@media (max-width: 992px) {
+
+/* Compact header tier — squeeze the horizontal nav so it fits 1081-1280px */
+@media (max-width: 1280px) {
     .header-container {
         padding: 0 2rem;
     }
 
-    nav ul {
+    nav > ul {
         gap: 1.5rem;
     }
 
-    .hero-content h1 {
-        font-size: 3.5rem;
+    .btn-contact {
+        padding: 0.6rem 1.2rem;
     }
 }
 
-@media (max-width: 768px) {
-    body {
-        line-height: 1.7;
-    }
-
-    .container {
-        padding: 0 1.5rem;
-    }
-
-    section {
-        padding: 4rem 0;
-    }
-
+/* Hamburger/overlay navigation — the horizontal nav cannot physically fit
+   below ~1080px (8 items + logo), so the mobile menu takes over well above
+   the 768px content breakpoint. */
+@media (max-width: 1080px) {
     /* Mobile Navigation */
     .nav-active {
         opacity: 1 !important;
@@ -1581,8 +1368,6 @@ body {
         height: 100dvh;
         background: radial-gradient(circle at center, var(--primary-color) 0%, var(--primary-dark) 100%);
         display: flex;
-        align-items: center;
-        justify-content: center;
         opacity: 0;
         visibility: hidden;
         transition: var(--transition-smooth);
@@ -1595,6 +1380,10 @@ body {
         flex-direction: column;
         align-items: center;
         gap: 2rem;
+        /* Safe centering: auto margins center when there is room and keep the
+           top items reachable/scrollable on short (landscape) viewports. */
+        margin: auto;
+        padding: 3rem 0;
     }
 
     #global-nav a {
@@ -1660,29 +1449,64 @@ body {
     .mobile-toggle.active span {
         background: var(--text-light) !important;
     }
+    .lang-switch {
+        margin: 3rem 0 0 0;
+        justify-content: center;
+    }
+
+    header.scrolled .lang-switch {
+        color: var(--text-light);
+    }
+
+    /* Always-visible compact contact button next to the hamburger */
+    .header-contact-sp {
+        display: inline-block;
+        margin-left: auto;
+        margin-right: 0.75rem;
+        padding: 0.4rem 0.9rem;
+        font-size: 0.8rem;
+        white-space: nowrap;
+    }
+
+    /* The open menu overlay has its own お問い合わせ link */
+    body.no-scroll .header-contact-sp {
+        visibility: hidden;
+    }
+}
+
+@media (max-width: 992px) {
+    .hero-content .hero-en {
+        font-size: 3.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        line-height: 1.7;
+    }
+
+    .container {
+        padding: 0 1.5rem;
+    }
+
+    section {
+        padding: 4rem 0;
+    }
+
 
     /* Hero Optimization */
-    .hero-content h1 {
+    .hero-content .hero-en {
         font-size: clamp(2rem, 9vw, 2.35rem);
         line-height: 1.16;
         letter-spacing: 0.045em;
         overflow-wrap: normal;
+        margin-bottom: 1.5rem;
+        text-wrap: balance;
     }
 
-    .hero-content p {
-        font-size: 1rem;
-    }
-
-    /* Grid Adjustments handled in footer refinement block */
-
-    /* Footer refinement */
-    .footer-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 3.5rem;
-        padding-bottom: 2rem;
+    .hero-content .hero-ja {
+        font-size: 0.95rem;
+        margin-bottom: 2.5rem;
     }
 
     /* Grid Adjustments - Optimized for catalog feel */
@@ -1692,6 +1516,19 @@ body {
     .export-grid,
     .flow-steps {
         grid-template-columns: 1fr;
+    }
+
+    /* Undo the stacked desktop insets so step text keeps a readable measure */
+    .flow-box {
+        padding: 1.5rem 1rem;
+    }
+
+    .flow-steps {
+        gap: 1rem;
+    }
+
+    .flow-steps li {
+        padding: 1.25rem 1rem;
     }
 
     .items-grid {
@@ -1712,154 +1549,36 @@ body {
         overflow: hidden;
     }
 
-    .footer-info {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .footer-info .logo img {
-        height: 50px;
-        margin-bottom: 1.5rem;
-    }
-
-    .footer-address {
-        font-size: 0.85rem;
-        line-height: 1.8;
-        opacity: 0.8;
-        max-width: 280px;
-        margin-bottom: 1.5rem;
-    }
-
-    .social-links {
-        display: flex;
-        justify-content: center;
-        gap: 1.5rem;
-    }
-
-    .social-links a {
-        margin: 0;
-    }
-
-    .footer-links h4 {
-        margin-bottom: 1.2rem;
-        font-size: 0.8rem;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        padding-bottom: 0.5rem;
-        display: inline-block;
-    }
-
-    .footer-links {
-        text-align: left;
-        width: 100%;
-        max-width: 320px;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
-    }
-
-    .footer-links>div {
-        flex: 1;
-    }
-
-    .footer-links li {
-        margin-bottom: 0.6rem;
-    }
-
-    .footer-links a {
-        font-size: 0.8rem;
-    }
-
-    .copyright {
-        padding-top: 2rem;
-        margin-top: 0;
-    }
-
     /* Page Headers */
-    .page-header h1 {
+    .page-header .ph-en {
         font-size: 2.2rem;
         text-wrap: balance;
     }
 
-    /* Modals */
-    .client-modal {
-        width: 95%;
-        padding: 0.5rem;
-    }
-
-    .modal-content {
-        padding: 2rem 1.5rem;
-    }
-
     /* Sections */
-    .section-title h2 {
-        font-size: 1.8rem;
+    .content-block {
+        padding: 2rem 0;
+        margin-bottom: 2.5rem;
     }
 
-    .content-block {
-        padding: 2.5rem 1.5rem;
+    /* The white client-section cards need their own inner padding */
+    .client-section {
+        padding: 2rem 1.25rem;
+    }
+
+    .content-block:last-child {
+        margin-bottom: 0;
     }
 
     .subpage-content {
         padding: 3.5rem 0;
     }
 
-    .content-block h3 {
+    .content-block h2 {
         font-size: 1.4rem;
         letter-spacing: 0.02em;
     }
 
-    /* Dropdown on mobile - Integrated List */
-    .dropdown {
-        display: block;
-        width: 100%;
-        text-align: center;
-    }
-
-    .dropdown-menu {
-        position: static;
-        transform: none;
-        background: transparent;
-        box-shadow: none;
-        border: none;
-        margin-top: 0.6rem;
-        padding: 0;
-        width: 100%;
-        opacity: 1 !important;
-        visibility: visible !important;
-    }
-
-    .dropdown-menu li {
-        margin: 0.6rem 0 0;
-    }
-
-    .dropdown-menu a {
-        display: block;
-        width: fit-content;
-        margin: 0 auto;
-        color: var(--secondary-light);
-        font-size: 0.95rem;
-        padding: 0.4rem 0.6rem;
-        opacity: 1;
-    }
-
-    /* Tap/active feedback must suit the dark menu — drop the desktop white box
-       that made the label look shifted inside a wide highlight */
-    .dropdown-menu a:hover,
-    .dropdown-menu a:focus,
-    .dropdown-menu a:active {
-        background: transparent;
-        color: #fff;
-    }
-
-    .lang-switch {
-        margin: 3rem 0 0 0;
-        justify-content: center;
-    }
-
-    header.scrolled .lang-switch {
-        color: var(--text-light);
-    }
 
     /* Typography & Balance Polish */
     .section-title h2 {
@@ -1874,32 +1593,17 @@ body {
         line-height: 1.8;
     }
 
-    .hero-content h1 {
-        font-size: clamp(2rem, 9vw, 2.35rem);
-        letter-spacing: 0.045em;
-        margin-bottom: 1.5rem;
-    }
-
-    .hero-content p {
-        font-size: 0.95rem;
-        margin-bottom: 2.5rem;
-    }
-
-    .hero-content h1 {
-        text-wrap: balance;
-    }
-
     /* Let centered Japanese copy wrap naturally instead of at desktop breaks.
        Scoped to Japanese pages: English needs its <br> (no spaces around it). */
-    html[lang="ja"] .hero-content p br,
+    html[lang="ja"] .hero-content .hero-ja br,
     html[lang="ja"] .appeal-box p br,
     html[lang="ja"] .pc-br {
         display: none;
     }
 
     /* Keep Japanese headings from splitting mid-word on narrow screens */
-    .content-block h3,
-    .appeal-box h4,
+    .content-block h2,
+    .appeal-box h3,
     .section-title h2 {
         word-break: keep-all;
     }
@@ -1908,7 +1612,7 @@ body {
         padding: 1.75rem 1.25rem;
     }
 
-    .appeal-box h4 {
+    .appeal-box h3 {
         font-size: 1.15rem;
         flex-wrap: wrap;
     }
@@ -1924,36 +1628,6 @@ body {
     .grid-2 {
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 0.75rem !important;
-    }
-
-    .access-card {
-        padding: 1rem !important;
-    }
-
-    .access-card h3 {
-        font-size: 0.8rem !important;
-        margin-bottom: 0.5rem !important;
-    }
-
-    .access-card .address {
-        font-size: 0.7rem !important;
-        margin-bottom: 0.75rem !important;
-        line-height: 1.4 !important;
-    }
-
-    .map-container,
-    .map-placeholder {
-        height: 120px !important;
-    }
-
-    /* Office Maps on Mobile */
-    .office-maps {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-
-    .map-wrapper {
-        height: 250px;
     }
 
     /* Tighten the heading-to-body rhythm: the desktop 5rem gap + tall divider
@@ -1975,7 +1649,7 @@ body {
         padding: 2.75rem 1.5rem;
     }
 
-    .cta-box h3 {
+    .cta-box h2 {
         font-size: 1.35rem;
         letter-spacing: 0.02em;
     }
@@ -1984,14 +1658,14 @@ body {
         padding: 1.25rem 1.25rem;
     }
 
-    .policy-body > h4 {
+    .policy-body > h3 {
         font-size: 1.08rem;
     }
 
     /* OUR MISSION on mobile: an airy statement, not a dense block. More section
        padding, generous leading, and two balanced paragraphs with space between. */
     .mission {
-        padding: 4.5rem 0;
+        padding: 4.5rem 1.5rem;
     }
 
     .mission .section-title {
@@ -2052,8 +1726,7 @@ body {
         line-height: 1.65 !important;
     }
 
-    .map-container,
-    .map-placeholder {
+    .map-container {
         height: 200px !important;
     }
 
@@ -2091,6 +1764,10 @@ body {
     .fade-up,
     .fade-up.motion-ready {
         opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .hero-slider {
         transform: none !important;
     }
 }

@@ -24,16 +24,20 @@
     <meta property="og:title" content="プライバシーポリシー｜株式会社Grand Trading">
     <meta property="og:description"
         content="株式会社Grand Trading のプライバシーポリシー。個人情報の取扱いについて定めています。">
-    <meta property="og:url" content="privacy.html">
-    <meta property="og:image" content="images/hero1.jpg">
+    <meta property="og:url" content="https://illflora.github.io/shisaku/privacy.html">
+    <meta property="og:image" content="https://illflora.github.io/shisaku/images/hero1.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="プライバシーポリシー｜株式会社Grand Trading">
     <meta name="twitter:description"
         content="株式会社Grand Trading のプライバシーポリシー。個人情報の取扱いについて定めています。">
-    <meta name="twitter:image" content="images/hero1.jpg">
+    <meta name="twitter:image" content="https://illflora.github.io/shisaku/images/hero1.jpg">
 
-    <link rel="stylesheet" href="css/style.css?v=20260627-2">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- LCP image + fonts: discovered early, loaded in parallel with the CSS -->
+    <link rel="preload" as="image" href="images/hero1.jpg" fetchpriority="high">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Lato:wght@300;400;700&display=swap">
+    <link rel="stylesheet" href="css/style.css?v=20260702-1">
 
     <!-- 構造化データ: パンくず -->
     <script type="application/ld+json">
@@ -41,7 +45,7 @@
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "index.html" },
+        { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://illflora.github.io/shisaku/index.html" },
         { "@type": "ListItem", "position": 2, "name": "Privacy Policy" }
       ]
     }
@@ -50,12 +54,15 @@
 
 <body>
 
+    <a class="skip-link" href="#main">本文へスキップ</a>
+
     <!-- Header -->
     <header>
         <div class="header-container">
             <a href="index.html" class="logo">
                 <img src="images/logo.png" alt="Grand Trading">
             </a>
+            <a href="contact.html" class="btn-contact header-contact-sp">お問い合わせ</a>
             <button class="mobile-toggle" id="mobile-toggle" type="button" aria-label="メニューを開く"
                 aria-controls="global-nav" aria-expanded="false">
                 <span></span>
@@ -79,20 +86,22 @@
         </div>
     </header>
 
+    <main id="main" tabindex="-1">
+
     <!-- Page Header -->
     <div class="page-header" style="background-image: url('images/hero1.jpg');"> <!-- Using general hero image -->
         <div class="page-header-overlay"></div>
         <div class="page-header-content fade-up">
-            <h1>Privacy Policy</h1>
-            <p>プライバシーポリシー</p>
+            <p class="ph-en">Privacy Policy</p>
+            <h1 class="ph-ja">プライバシーポリシー</h1>
         </div>
     </div>
 
     <!-- Breadcrumb -->
-    <div class="breadcrumb">
+    <div class="breadcrumb" role="navigation" aria-label="パンくずリスト">
         <ul>
             <li><a href="index.html">HOME</a></li>
-            <li>Privacy Policy</li>
+            <li aria-current="page">Privacy Policy</li>
         </ul>
     </div>
 
@@ -100,24 +109,24 @@
     <section class="subpage-content">
         <div class="container measure">
             <div class="content-block fade-up">
-                <h3>プライバシーポリシー</h3>
+                <h2>プライバシーポリシー</h2>
                 <p>株式会社Grand
                     Trading（以下，「当社」といいます。）は，本ウェブサイト上で提供するサービス（以下，「本ウェブサイト」といいます。）における，ユーザーの個人情報の取扱いについて，以下のとおりプライバシーポリシー（以下，「本ポリシー」といいます。）を定めます。
                 </p>
 
                 <div class="policy-body">
-                    <h4>
-                        第1条（個人情報）</h4>
+                    <h3>
+                        第1条（個人情報）</h3>
                     <p>「個人情報」とは，個人情報保護法にいう「個人情報」を指すものとし，生存する個人に関する情報であって，当該情報に含まれる氏名，生年月日，住所，電話番号，連絡先その他の記述等により特定の個人を識別できる情報及び容貌，指紋，声紋にかかるデータ，及び健康保険証の保険者番号などの当該情報単体から特定の個人を識別できる情報（個人識別情報）を指します。
                     </p>
 
-                    <h4>
-                        第2条（個人情報の収集方法）</h4>
+                    <h3>
+                        第2条（個人情報の収集方法）</h3>
                     <p>当社は，ユーザーが利用登録をする際に氏名，生年月日，住所，電話番号，メールアドレス，銀行口座番号，クレジットカード番号，運転免許証番号などの個人情報をお尋ねすることがあります。また，ユーザーと提携先などとの間でなされたユーザーの個人情報を含む取引記録や決済に関する情報を,当社の提携先（情報提供元，広告主，広告配信先などを含みます。以下，｢提携先｣といいます。）などから収集することがあります。
                     </p>
 
-                    <h4>
-                        第3条（個人情報を収集・利用する目的）</h4>
+                    <h3>
+                        第3条（個人情報を収集・利用する目的）</h3>
                     <p>当社が個人情報を収集・利用する目的は，以下のとおりです。</p>
                     <ol>
                         <li>本ウェブサイトサービスの提供・運営のため</li>
@@ -129,15 +138,15 @@
                         <li>上記の利用目的に付随する目的</li>
                     </ol>
 
-                    <h4>
-                        第4条（利用目的の変更）</h4>
+                    <h3>
+                        第4条（利用目的の変更）</h3>
                     <ol>
                         <li>当社は，利用目的が変更前と関連性を有すると合理的に認められる場合に限り，個人情報の利用目的を変更するものとします。</li>
                         <li>利用目的の変更を行った場合には，変更後の目的について，本ウェブサイト所定の方法により，ユーザーに通知し，または本ウェブサイト上に公表するものとします。</li>
                     </ol>
 
-                    <h4>
-                        第5条（個人情報の第三者提供）</h4>
+                    <h3>
+                        第5条（個人情報の第三者提供）</h3>
                     <ol>
                         <li>当社は，次に掲げる場合を除いて，あらかじめユーザーの同意を得ることなく，第三者に個人情報を提供することはありません。ただし，個人情報保護法その他の法令で認められる場合を除きます。
                             <ul>
@@ -150,8 +159,8 @@
                         </li>
                     </ol>
 
-                    <h4>
-                        第6条（個人情報の開示）</h4>
+                    <h3>
+                        第6条（個人情報の開示）</h3>
                     <p>当社は，本人から個人情報の開示を求められたときは，本人に対し，遅滞なくこれを開示します。ただし，開示することにより次のいずれかに該当する場合は，その全部または一部を開示しないこともあり，開示しない決定をした場合には，その旨を遅滞なく通知します。
                     </p>
                     <ol>
@@ -160,28 +169,28 @@
                         <li>その他法令に違反することとなる場合</li>
                     </ol>
 
-                    <h4>
-                        第7条（個人情報の訂正および削除）</h4>
+                    <h3>
+                        第7条（個人情報の訂正および削除）</h3>
                     <ol>
                         <li>ユーザーは，当社の保有する自己の個人情報が誤った情報である場合には，当社が定める手続きにより，当社に対して個人情報の訂正，追加または削除（以下，「訂正等」といいます。）を請求することができます。
                         </li>
                         <li>当社は，ユーザーから前項の請求を受けてその請求に応じる必要があると判断した場合には，遅滞なく，当該個人情報の訂正等を行うものとします。</li>
                     </ol>
 
-                    <h4>
-                        第8条（個人情報の利用停止等）</h4>
+                    <h3>
+                        第8条（個人情報の利用停止等）</h3>
                     <p>当社は，本人から，個人情報が，利用目的の範囲を超えて取り扱われているという理由，または不正の手段により取得されたものであるという理由により，その利用の停止または消去（以下，「利用停止等」といいます。）を求められた場合には，遅滞なく必要な調査を行います。
                     </p>
 
-                    <h4>
-                        第9条（プライバシーポリシーの変更）</h4>
+                    <h3>
+                        第9条（プライバシーポリシーの変更）</h3>
                     <ol>
                         <li>本ポリシーの内容は，法令その他本ポリシーに別段の定めのある事項を除いて，ユーザーに通知することなく，変更することができるものとします。</li>
                         <li>当社が別途定める場合を除いて，変更後のプライバシーポリシーは，本ウェブサイトに掲載したときから効力を生じるものとします。</li>
                     </ol>
 
-                    <h4>
-                        第10条（お問い合わせ窓口）</h4>
+                    <h3>
+                        第10条（お問い合わせ窓口）</h3>
                     <p>本ポリシーに関するお問い合わせは，下記の窓口までお願いいたします。</p>
                     <div class="note-box">
                         <p class="note-lead">株式会社Grand Trading</p>
@@ -191,6 +200,8 @@
             </div>
         </div>
     </section>
+
+    </main>
 
     <!-- Footer -->
     <footer>
@@ -209,7 +220,7 @@
         </div>
     </footer>
 
-    <script src="js/script.js?v=20260627-2"></script>
+    <script src="js/script.js?v=20260702-1"></script>
     <script src="js/translate.js?v=20260625-6"></script>
 
 </body>

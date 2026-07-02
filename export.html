@@ -24,15 +24,22 @@
     <meta property="og:title" content="海外輸出事業｜中古品・リユース品をアジアへ">
     <meta property="og:description"
         content="日本の中古品・リユース品を中国・タイ・フィリピン等アジア各国へ輸出。コンテナ輸出のサポート・現地調査も対応します。">
-    <meta property="og:url" content="export.html">
-    <meta property="og:image" content="images/section_export.jpg">
+    <meta property="og:url" content="https://illflora.github.io/shisaku/export.html">
+    <meta property="og:image" content="https://illflora.github.io/shisaku/images/section_export.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="海外輸出事業｜中古品・リユース品をアジアへ">
     <meta name="twitter:description"
         content="日本の中古品・リユース品を中国・タイ・フィリピン等アジア各国へ輸出。現地調査も対応します。">
-    <meta name="twitter:image" content="images/section_export.jpg">
+    <meta name="twitter:image" content="https://illflora.github.io/shisaku/images/section_export.jpg">
 
-    <link rel="stylesheet" href="css/style.css?v=20260627-2">
+    <!-- LCP image + fonts: discovered early, loaded in parallel with the CSS -->
+    <link rel="preload" as="image" href="images/section_export.jpg" fetchpriority="high">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Lato:wght@300;400;700&display=swap">
+    <link rel="stylesheet" href="css/style.css?v=20260702-1">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <!-- 構造化データ: パンくず -->
@@ -41,7 +48,7 @@
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "index.html" },
+        { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://illflora.github.io/shisaku/index.html" },
         { "@type": "ListItem", "position": 2, "name": "Overseas Export" }
       ]
     }
@@ -50,12 +57,15 @@
 
 <body>
 
+    <a class="skip-link" href="#main">本文へスキップ</a>
+
     <!-- Header -->
     <header>
         <div class="header-container">
             <a href="index.html" class="logo">
                 <img src="images/logo.png" alt="Grand Trading">
             </a>
+            <a href="contact.html" class="btn-contact header-contact-sp">お問い合わせ</a>
             <button class="mobile-toggle" id="mobile-toggle" type="button" aria-label="メニューを開く"
                 aria-controls="global-nav" aria-expanded="false">
                 <span></span>
@@ -79,20 +89,22 @@
         </div>
     </header>
 
+    <main id="main" tabindex="-1">
+
     <!-- Page Header -->
     <div class="page-header" style="background-image: url('images/section_export.jpg');">
         <div class="page-header-overlay"></div>
         <div class="page-header-content fade-up">
-            <h1>Overseas Export</h1>
-            <p>海外輸出事業</p>
+            <p class="ph-en">Overseas Export</p>
+            <h1 class="ph-ja">海外輸出事業</h1>
         </div>
     </div>
 
     <!-- Breadcrumb -->
-    <div class="breadcrumb">
+    <div class="breadcrumb" role="navigation" aria-label="パンくずリスト">
         <ul>
             <li><a href="index.html">HOME</a></li>
-            <li>Overseas Export</li>
+            <li aria-current="page">Overseas Export</li>
         </ul>
     </div>
 
@@ -100,7 +112,7 @@
     <section class="subpage-content">
         <div class="container measure">
             <div class="content-block fade-up">
-                <h3>海外輸出</h3>
+                <h2>海外輸出</h2>
                 <p>
                     国内で使用しなくなった、お皿・鞄・靴などをはじめまだリユースできる商品をアジア各国へ輸出しております。<br><br>
                     『コンテナを出してみたい』というお客様へのサポート・現地調査もしておりますのでお気軽にご相談・お問い合わせください。
@@ -111,7 +123,7 @@
             </div>
 
             <div class="content-block fade-up delay-100">
-                <h3>輸出事例</h3>
+                <h2>輸出事例</h2>
                 <div class="note-box accent">
                     <p class="note-lead">陶器・骨董品・アンティーク・雑貨など</p>
                 </div>
@@ -134,7 +146,7 @@
 
                 <!-- Appeal Text -->
                 <div class="appeal-box">
-                    <h4><i class="fa-solid fa-box-open"></i> 幅広い商材に対応します</h4>
+                    <h3><i class="fa-solid fa-box-open"></i> 幅広い商材に対応します</h3>
                     <p>
                         掲載写真はあくまで一例です。<br>
                         株式会社Grand Tradingでは、海外現地のリアルな需要に基づき、多種多様な商材を取り扱っております。<br>
@@ -143,9 +155,15 @@
                         まずはお気軽にご相談ください。
                     </p>
                 </div>
+
+                <div class="btn-center">
+                    <a href="contact.html" class="btn-main">お問い合わせはこちら</a>
+                </div>
             </div>
         </div>
     </section>
+
+    </main>
 
     <!-- Footer -->
     <footer>
@@ -164,7 +182,7 @@
         </div>
     </footer>
 
-    <script src="js/script.js?v=20260627-2"></script>
+    <script src="js/script.js?v=20260702-1"></script>
     <script src="js/translate.js?v=20260625-6"></script>
 
 </body>

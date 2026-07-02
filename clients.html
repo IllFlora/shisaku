@@ -24,15 +24,22 @@
     <meta property="og:title" content="対象のお客様｜行政・店舗・業者・個人">
     <meta property="og:description"
         content="行政・自治体、店舗、買取／回収業者、個人まで。海外リユース・在庫処分・遺品整理品の換価など幅広く対応します。">
-    <meta property="og:url" content="clients.html">
-    <meta property="og:image" content="images/hero2.jpg">
+    <meta property="og:url" content="https://illflora.github.io/shisaku/clients.html">
+    <meta property="og:image" content="https://illflora.github.io/shisaku/images/hero2.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="対象のお客様｜行政・店舗・業者・個人">
     <meta name="twitter:description"
         content="行政・自治体、店舗、買取／回収業者、個人まで。海外リユース・在庫処分・遺品整理品の換価など幅広く対応。">
-    <meta name="twitter:image" content="images/hero2.jpg">
+    <meta name="twitter:image" content="https://illflora.github.io/shisaku/images/hero2.jpg">
 
-    <link rel="stylesheet" href="css/style.css?v=20260627-2">
+    <!-- LCP image + fonts: discovered early, loaded in parallel with the CSS -->
+    <link rel="preload" as="image" href="images/hero2.jpg" fetchpriority="high">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Lato:wght@300;400;700&display=swap">
+    <link rel="stylesheet" href="css/style.css?v=20260702-1">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <!-- 構造化データ: パンくず -->
@@ -41,7 +48,7 @@
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "index.html" },
+        { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://illflora.github.io/shisaku/index.html" },
         { "@type": "ListItem", "position": 2, "name": "Target Clients" }
       ]
     }
@@ -50,12 +57,15 @@
 
 <body>
 
+    <a class="skip-link" href="#main">本文へスキップ</a>
+
     <!-- Header -->
     <header>
         <div class="header-container">
             <a href="index.html" class="logo">
                 <img src="images/logo.png" alt="Grand Trading">
             </a>
+            <a href="contact.html" class="btn-contact header-contact-sp">お問い合わせ</a>
             <button class="mobile-toggle" id="mobile-toggle" type="button" aria-label="メニューを開く"
                 aria-controls="global-nav" aria-expanded="false">
                 <span></span>
@@ -79,20 +89,22 @@
         </div>
     </header>
 
+    <main id="main" tabindex="-1">
+
     <!-- Page Header -->
     <div class="page-header" style="background-image: url('images/hero2.jpg');">
         <div class="page-header-overlay"></div>
         <div class="page-header-content fade-up">
-            <h1>Target Clients</h1>
-            <p>対象のお客様</p>
+            <p class="ph-en">Target Clients</p>
+            <h1 class="ph-ja">対象のお客様</h1>
         </div>
     </div>
 
     <!-- Breadcrumb -->
-    <div class="breadcrumb">
+    <div class="breadcrumb" role="navigation" aria-label="パンくずリスト">
         <ul>
             <li><a href="index.html">HOME</a></li>
-            <li>Target Clients</li>
+            <li aria-current="page">Target Clients</li>
         </ul>
     </div>
 
@@ -101,7 +113,7 @@
         <div class="container">
 
             <div class="content-block fade-up">
-                <h3>様々なニーズにお応えします</h3>
+                <h2>様々なニーズにお応えします</h2>
                 <p>
                     株式会社Grand Tradingは、行政・自治体、法人様、業者様、そして個人のお客様まで、幅広い層のニーズに対応した買取・リユース事業を展開しています。<br>
                     それぞれの特性に合わせた最適なプランをご提案し、持続可能な社会の実現に貢献します。
@@ -112,7 +124,7 @@
             <div id="admin" class="content-block client-section fade-up delay-100">
                 <div class="client-header">
                     <i class="fa-solid fa-building-columns"></i>
-                    <h4>行政・自治体のお客様</h4>
+                    <h3>行政・自治体のお客様</h3>
                 </div>
                 <div class="client-body">
                     <p class="lead-text">粗大ごみの海外リユース活用をご検討ください</p>
@@ -127,7 +139,7 @@
                     <p class="note">※当社では、集荷後に海外リユースできないものは法令に基づき適正に処理しています。</p>
 
                     <div class="flow-box">
-                        <h5><i class="fa-solid fa-clipboard-list"></i> お取引の流れ</h5>
+                        <h4><i class="fa-solid fa-clipboard-list"></i> お取引の流れ</h4>
                         <ul class="flow-steps">
                             <li>
                                 <span class="step-num">01</span>
@@ -158,7 +170,7 @@
             <div id="corp" class="content-block client-section fade-up delay-100">
                 <div class="client-header">
                     <i class="fa-solid fa-store"></i>
-                    <h4>店舗のお客様</h4>
+                    <h3>店舗のお客様</h3>
                 </div>
                 <div class="client-body">
                     <p class="lead-text">日本国内では販売の難しい在庫を抱えていませんか？</p>
@@ -171,7 +183,7 @@
                     </p>
 
                     <div class="flow-box">
-                        <h5><i class="fa-solid fa-clipboard-list"></i> お取引の流れ</h5>
+                        <h4><i class="fa-solid fa-clipboard-list"></i> お取引の流れ</h4>
                         <ul class="flow-steps">
                             <li>
                                 <span class="step-num">01</span>
@@ -202,18 +214,18 @@
             <div id="trader" class="content-block client-section fade-up delay-100">
                 <div class="client-header">
                     <i class="fa-solid fa-handshake"></i>
-                    <h4>業者様</h4>
+                    <h3>業者様</h3>
                 </div>
                 <div class="client-body">
                     <p class="lead-text">LIVEオークションor海外輸出で利益を最大限に</p>
                     <p>
                         引越し業者様・不用品回収業者様・生前・遺品整理業者様など、倉庫持ち込みから現地引き取りまで幅広く対応をしています。<br><br>
-                        商品に関しては、弊社にて売却をさせてもらいましてお客様へお振込にてお支払いをさせてもらっております。
+                        商品に関しては、当社にて売却をさせていただき、お客様へお振込にてお支払いしております。
                     </p>
 
 
                     <div class="flow-box">
-                        <h5><i class="fa-solid fa-clipboard-list"></i> お取引の流れ</h5>
+                        <h4><i class="fa-solid fa-clipboard-list"></i> お取引の流れ</h4>
                         <ul class="flow-steps">
                             <li>
                                 <span class="step-num">01</span>
@@ -239,7 +251,7 @@
             <div id="individual" class="content-block client-section fade-up delay-100">
                 <div class="client-header">
                     <i class="fa-solid fa-user"></i>
-                    <h4>個人のお客様</h4>
+                    <h3>個人のお客様</h3>
                 </div>
                 <div class="client-body">
                     <p class="lead-text">リサイクルショップでは買取できないようなものもご相談ください</p>
@@ -247,17 +259,17 @@
                         生前整理、遺品整理、引越整理、不用品整理など、ご自宅で不要となった家電製品、自転車、食器・家具・雑貨等を買取いたします。
                     </p>
                     <p>
-                        当社では、一般的なリサイクルショップでは買取できないようなもの、取扱できる場合があります。<br>
+                        当社では、一般的なリサイクルショップでは買取できないようなものも、お取扱いできる場合があります。<br>
                         お客様にお持ち込みいただいた商品は、査定後に指定の口座へお支払いをいたします。
                     </p>
 
                     <div class="flow-box">
-                        <h5><i class="fa-solid fa-clipboard-list"></i> お取引の流れ</h5>
+                        <h4><i class="fa-solid fa-clipboard-list"></i> お取引の流れ</h4>
                         <ul class="flow-steps">
                             <li>
                                 <span class="step-num">01</span>
                                 <span class="step-title">お問い合わせ/持込</span>
-                                <p>まずはお電話ください。お持ち込みも大歓迎です。</p>
+                                <p>まずはお問い合わせフォームよりご連絡ください。お持ち込みも大歓迎です。</p>
                             </li>
                             <li>
                                 <span class="step-num">02</span>
@@ -280,6 +292,8 @@
         </div>
     </section>
 
+    </main>
+
     <!-- Footer -->
     <footer>
         <div class="footer-simple">
@@ -297,7 +311,7 @@
         </div>
     </footer>
 
-    <script src="js/script.js?v=20260627-2"></script>
+    <script src="js/script.js?v=20260702-1"></script>
     <script src="js/translate.js?v=20260625-6"></script>
 
 </body>

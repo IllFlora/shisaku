@@ -26,23 +26,24 @@
 
 ---
 
-## ⚠️ ドメイン取得後に必ずやる「1ステップ置換」
+## ⚠️ ドメイン取得後に必ずやる「2コマンド置換」
 
-`robots.txt` と `sitemap.xml` の中の **`example.com` を正式ドメインに一括置換**するだけ。
-
-git-bash の例（`https://正式ドメイン` に置換）:
+**(1)** `robots.txt`/`sitemap.xml` の `example.com` を正式ドメインに、**(2)** 各HTMLの OGP・JSON-LD が使っている暫定の GitHub Pages URL を正式ドメインに一括置換:
 
 ```bash
 sed -i 's#https://example.com#https://正式ドメイン#g' robots.txt sitemap.xml
+sed -i 's#https://illflora.github.io/shisaku#https://正式ドメイン#g' *.html
 ```
 
-（任意・推奨）SNS共有プレビューと Google ロゴ表示を完全対応させるなら、各HTMLの `og:image` と JSON-LD の `logo`/`url` も絶対URL（`https://正式ドメイン/...`）にすると万全。相対のままでも表示自体は機能します。
+あわせて `sitemap.xml` の `<lastmod>` を公開日（または各ページの最終更新日）に更新してください。
+
+> 補足: `og:url` / `og:image` / `twitter:image` と JSON-LD の `url`/`logo`/`image`/パンくず `item` は**絶対URL必須**（OGPスクレイパーやGoogleのリッチリザルトは相対URLを解決しない）ため、暫定でライブの GitHub Pages URL を焼き込んであります。上の (2) がそれを正式ドメインへ切り替えます。canonical は相対のままでOK（配信ホストに自動追従します）。
 
 ## 公開後にやること（Search Console 等）
 
 1. 独自ドメインを取得し、GitHub Pages に設定（リポジトリ Settings → Pages → Custom domain）
 2. HTTPS 有効化（GitHub Pages の "Enforce HTTPS"）
-3. 上記「1ステップ置換」を実施して push
+3. 上記「2コマンド置換」＋ lastmod 更新を実施して push
 4. [Google Search Console](https://search.google.com/search-console) にプロパティ登録
 5. ドメイン所有権を確認
 6. `https://正式ドメイン/sitemap.xml` を送信

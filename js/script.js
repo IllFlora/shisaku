@@ -37,8 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const onScrollFrame = () => {
         const y = latestScrollY;
         // Subtle parallax only while the hero is on screen; clamp past it so we
-        // stop writing styles once it's scrolled away.
-        if (heroSlider) {
+        // stop writing styles once it's scrolled away. Skipped entirely for
+        // users who prefer reduced motion.
+        if (heroSlider && !reduceMotion) {
             const limit = window.innerHeight;
             const shift = (y < limit ? y : limit) * 0.3;
             heroSlider.style.transform = `translate3d(0, ${shift}px, 0)`;
@@ -58,73 +59,61 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
     onScrollFrame(); // set initial state
 
-    // Hero Slider
+    // Hero Slider — slides 2-3 are deferred via data-bg so their images don't
+    // compete with the LCP image at first paint; they hydrate after load and
+    // the rotation never advances onto a slide whose image isn't ready yet.
     const slides = document.querySelectorAll('.slide');
     let currentSlide = 0;
     const slideInterval = 5000; // 5 seconds
 
+    function hydrateDeferredSlides() {
+        document.querySelectorAll('.slide[data-bg]').forEach(slide => {
+            const src = slide.dataset.bg;
+            const img = new Image();
+            img.onload = () => {
+                slide.style.backgroundImage = `url('${src}')`;
+                delete slide.dataset.bg;
+            };
+            img.src = src;
+        });
+    }
+
     function nextSlide() {
         if (slides.length === 0) return;
+        const next = (currentSlide + 1) % slides.length;
+        if (slides[next].dataset.bg) return; // image not ready — retry next tick
         slides[currentSlide].classList.remove('active');
-        currentSlide = (currentSlide + 1) % slides.length;
+        currentSlide = next;
         slides[currentSlide].classList.add('active');
     }
 
     if (slides.length > 0) {
-        setInterval(nextSlide, slideInterval);
+        window.addEventListener('load', hydrateDeferredSlides);
+        if (!reduceMotion) {
+            setInterval(nextSlide, slideInterval);
+        }
     }
 
-    // Smooth Scrolling for Anchor Links
+    // Smooth Scrolling for Anchor Links (skip bare "#" links like the JP|EN
+    // switch, and move focus to the target for keyboard/skip-link users)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href === '#') return;
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            const target = document.querySelector(href);
             if (target) {
                 target.scrollIntoView({
-                    behavior: 'smooth'
+                    behavior: reduceMotion ? 'auto' : 'smooth'
                 });
+                target.focus({ preventScroll: true });
             }
         });
     });
 
     // (Sticky header is handled in the rAF scroll loop above.)
 
-    // Client Details Modals
-    const modalOverlay = document.getElementById('modal-overlay');
-    const modalCards = document.querySelectorAll('.client-card[data-modal]');
-    const closeButtons = document.querySelectorAll('.modal-close');
-    const modals = document.querySelectorAll('.client-modal');
-
-    // Open Modal
-    modalCards.forEach(card => {
-        card.addEventListener('click', () => {
-            const modalId = card.getAttribute('data-modal');
-            const targetModal = document.getElementById(modalId);
-
-            if (targetModal && modalOverlay) {
-                targetModal.classList.add('active');
-                modalOverlay.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Prevent scrolling
-            }
-        });
-    });
-
-    // Close Function
-    const closeModal = () => {
-        modals.forEach(modal => modal.classList.remove('active'));
-        if (modalOverlay) modalOverlay.classList.remove('active');
-        document.body.style.overflow = ''; // Restore scrolling
-    };
-
-    // Close on X click
-    closeButtons.forEach(btn => {
-        btn.addEventListener('click', closeModal);
-    });
-
-    // Close on Overlay click
-    if (modalOverlay) {
-        modalOverlay.addEventListener('click', closeModal);
-    }
+    // (Client-detail modals were removed from the markup; their JS is gone too.)
 
     // Mobile Menu Toggle
     const mobileToggle = document.getElementById('mobile-toggle');

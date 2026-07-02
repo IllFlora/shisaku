@@ -24,16 +24,20 @@
     <meta property="og:title" content="グランドオークション｜BtoBライブ式古物オークション（全国6会場）">
     <meta property="og:description"
         content="千葉・長野・茨城・福島・三重・山梨の全国6会場で開催。スマホ・PCからリアルタイム参加可能なBtoB古物オークションです。">
-    <meta property="og:url" content="auction.html">
-    <meta property="og:image" content="images/section_grandauction.jpg">
+    <meta property="og:url" content="https://illflora.github.io/shisaku/auction.html">
+    <meta property="og:image" content="https://illflora.github.io/shisaku/images/section_grandauction.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="グランドオークション｜BtoBライブ式古物オークション（全国6会場）">
     <meta name="twitter:description"
         content="千葉・長野・茨城・福島・三重・山梨の全国6会場で開催。スマホ・PCからリアルタイム参加可能。">
-    <meta name="twitter:image" content="images/section_grandauction.jpg">
+    <meta name="twitter:image" content="https://illflora.github.io/shisaku/images/section_grandauction.jpg">
 
-    <link rel="stylesheet" href="css/style.css?v=20260627-2">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- LCP image + fonts: discovered early, loaded in parallel with the CSS -->
+    <link rel="preload" as="image" href="images/section_grandauction.jpg" fetchpriority="high">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Lato:wght@300;400;700&display=swap">
+    <link rel="stylesheet" href="css/style.css?v=20260702-1">
 
     <!-- 構造化データ: パンくず -->
     <script type="application/ld+json">
@@ -41,7 +45,7 @@
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "index.html" },
+        { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://illflora.github.io/shisaku/index.html" },
         { "@type": "ListItem", "position": 2, "name": "Grand Auction" }
       ]
     }
@@ -50,12 +54,15 @@
 
 <body>
 
+    <a class="skip-link" href="#main">本文へスキップ</a>
+
     <!-- Header -->
     <header>
         <div class="header-container">
             <a href="index.html" class="logo">
                 <img src="images/logo.png" alt="Grand Trading">
             </a>
+            <a href="contact.html" class="btn-contact header-contact-sp">お問い合わせ</a>
             <button class="mobile-toggle" id="mobile-toggle" type="button" aria-label="メニューを開く"
                 aria-controls="global-nav" aria-expanded="false">
                 <span></span>
@@ -79,20 +86,22 @@
         </div>
     </header>
 
+    <main id="main" tabindex="-1">
+
     <!-- Page Header -->
     <div class="page-header" style="background-image: url('images/section_grandauction.jpg');">
         <div class="page-header-overlay"></div>
         <div class="page-header-content fade-up">
-            <h1>Grand Auction</h1>
-            <p>グランドオークション</p>
+            <p class="ph-en">Grand Auction</p>
+            <h1 class="ph-ja">グランドオークション</h1>
         </div>
     </div>
 
     <!-- Breadcrumb -->
-    <div class="breadcrumb">
+    <div class="breadcrumb" role="navigation" aria-label="パンくずリスト">
         <ul>
             <li><a href="index.html">HOME</a></li>
-            <li>Grand Auction</li>
+            <li aria-current="page">Grand Auction</li>
         </ul>
     </div>
 
@@ -100,18 +109,18 @@
     <section class="subpage-content">
         <div class="container">
             <div class="content-block fade-up">
-                <h3>BtoBライブ式オークション</h3>
+                <h2>BtoBライブ式オークション</h2>
                 <p>
-                    グランドオークションは千葉、長野、三重、茨城、山梨、福島の6拠点に展開しており、各地から、業者様より商品をご出品して頂いております。<br>
-                    現在は不用品回収業、リサイクルショップ、買取店舗、からの出品が多く、中古物を主に取り扱っております。LIVE式の為、スマホやパソコンで、どこにいてもリアルタイムで参加可能です。<br>
-                    ご出品、ご参加希望の方はお気軽にお問合せください。
+                    グランドオークションは千葉、長野、三重、茨城、山梨、福島の6拠点に展開しており、各地の業者様より商品をご出品いただいております。<br>
+                    現在は不用品回収業、リサイクルショップ、買取店舗などからの出品が多く、中古品を主に取り扱っております。LIVE式の為、スマホやパソコンで、どこにいてもリアルタイムで参加可能です。<br>
+                    ご出品、ご参加希望の方はお気軽にお問い合わせください。
                 </p>
 
             </div>
 
             <!-- Handling Items Section -->
             <div class="content-block fade-up delay-100">
-                <h3>取り扱い品目</h3>
+                <h2>取り扱い品目</h2>
             <p>
                 グランドオークションでは、多様なカテゴリーの商品を取り扱っております。<br>
                 市場価値の高い希少なヴィンテージアイテムから、最新のトレンド商品まで、幅広いラインナップをご用意しております。
@@ -201,7 +210,7 @@
         </div>
 
         <div class="cta-box fade-up delay-200">
-            <h3>オークションへの参加について</h3>
+            <h2>オークションへの参加について</h2>
             <p class="jp-flow">
                 グランドオークションへのご参加、ご出品を希望される事業者様は、下記よりお申し込みください。<br class="pc-br">
                 初めての方でも安心してご利用いただけるよう、<span class="nowrap">専任スタッフ</span>がサポートいたします。
@@ -210,6 +219,8 @@
         </div>
         </div>
     </section>
+
+    </main>
 
     <!-- Footer -->
     <footer>
@@ -228,7 +239,7 @@
         </div>
     </footer>
 
-    <script src="js/script.js?v=20260627-2"></script>
+    <script src="js/script.js?v=20260702-1"></script>
     <script src="js/translate.js?v=20260625-6"></script>
 
 </body>
